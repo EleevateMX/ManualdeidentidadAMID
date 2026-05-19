@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ApagonesMid — Manual de Identidad v4</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,900&family=Barlow+Condensed:wght@700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --g:   #65081F; --gd:  #5C0120; --gm:  #7D0A27; --gb:  #9B1035;
+  --gl:  rgba(101,8,31,.15); --gg:  rgba(101,8,31,.5);
+  --t:   #0BA8C4; --tb:  #12CBF0; --td:  #077E94;
+  --amb: #F5A623; --ambb:#FFD700; --ambd:#C07B10;
+  --bk:  #060406; --d1:  #0D080B; --d2:  #150E12; --d3:  #1C1218; --d4:  #231620;
+  --gr1: #2A1822; --gr2: #3A2430; --gr3: #664455; --gr4: #998899; --gr5: #CCBBCC;
+  --wh:  #F4EEF2;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bk);color:var(--wh);font-family:'Barlow',sans-serif;font-size:15px;line-height:1.65;overflow-x:hidden}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:300;background:rgba(6,4,6,.97);border-bottom:1px solid var(--gr1);display:flex;align-items:center;padding:0 36px;backdrop-filter:blur(14px)}
+.nb{display:flex;align-items:center;gap:9px;padding:14px 0;margin-right:20px}
+.nb-nm{font-family:'Nunito',sans-serif;font-weight:900;font-size:16px}
+.nb-nm .n1{color:var(--wh)} .nb-nm .n2{color:var(--gr4);font-weight:400}
+.nd{width:1px;height:20px;background:var(--gr1);margin:0 2px}
+nav a{color:var(--gr4);text-decoration:none;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:17px 10px;transition:color .2s;white-space:nowrap}
+nav a:hover{color:var(--gb)}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .65s,transform .65s}
+.rv.on{opacity:1;transform:translateY(0)}
+.rv.d1{transition-delay:.08s} .rv.d2{transition-delay:.16s} .rv.d3{transition-delay:.24s}
+
+/* LAYOUT */
+section{padding:92px 0;border-top:1px solid var(--gr1)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 44px}
+.sl{font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gb);margin-bottom:10px}
+.st{font-family:'Nunito',sans-serif;font-weight:900;font-size:50px;line-height:.95;margin-bottom:14px}
+.sr{width:50px;height:3px;background:linear-gradient(90deg,var(--gb),var(--gd));border-radius:2px;margin-bottom:20px}
+.ss{font-size:15px;font-weight:300;color:var(--gr5);max-width:560px;margin-bottom:48px;line-height:1.75}
+.cell{background:var(--d2);padding:40px;border:1px solid var(--gr1)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--gr1);border:1px solid var(--gr1)}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:var(--gr1);border:1px solid var(--gr1)}
+.tc-lbl{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gb);margin-bottom:18px}
+
+/* ══ HERO ══ */
+.hero{min-height:100vh;display:grid;place-items:center;position:relative;overflow:hidden;border:none;background:var(--bk)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--gl) 1px,transparent 1px),linear-gradient(90deg,var(--gl) 1px,transparent 1px);background-size:56px 56px}
+.hero-rad{position:absolute;inset:0;background:radial-gradient(ellipse 65% 65% at 50% 55%,rgba(101,8,31,.32) 0%,transparent 65%)}
+.hero-vig{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 15%,var(--bk) 70%)}
+.sparks{position:absolute;inset:0;pointer-events:none}
+.spark{position:absolute;border-radius:50%;animation:spk var(--dur,4s) ease-in-out infinite;opacity:0}
+@keyframes spk{0%{opacity:0;transform:translate(0,0)}20%{opacity:.8}80%{opacity:.2}100%{opacity:0;transform:translate(var(--tx,20px),var(--ty,-60px))}}
+.hero-c{position:relative;z-index:2;text-align:center;padding:80px 40px;display:flex;flex-direction:column;align-items:center}
+.mascot-glow{filter:drop-shadow(0 0 28px rgba(101,8,31,.7)) drop-shadow(0 0 70px rgba(101,8,31,.35));animation:mg 3.5s ease-in-out infinite}
+@keyframes mg{0%,100%{filter:drop-shadow(0 0 28px rgba(101,8,31,.7)) drop-shadow(0 0 70px rgba(101,8,31,.35))}50%{filter:drop-shadow(0 0 48px rgba(155,16,53,.9)) drop-shadow(0 0 110px rgba(101,8,31,.52))}}
+.eye-b{animation:eb 5s ease-in-out infinite}
+@keyframes eb{0%,93%,97%,100%{transform:scaleY(1)} 95%{transform:scaleY(0.06)}}
+.hero-brand{font-family:'Nunito',sans-serif;font-weight:900;font-size:78px;line-height:.88;margin:24px 0 8px}
+.hero-brand .h1{color:var(--wh)} .hero-brand .h2{background:linear-gradient(135deg,var(--gb),var(--g),var(--gd));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-tl{font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--gr3);margin-bottom:28px}
+.hero-desc{font-size:16px;font-weight:300;color:var(--gr5);max-width:500px;line-height:1.8;margin-bottom:40px}
+.hero-chips{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.hchip{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gr2);border:1px solid var(--gr1);padding:8px 18px;border-radius:2px}
+
+/* ══ APP ICON ══ */
+.icon-comparison{display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap;padding:52px;background:var(--d2);border:1px solid var(--gr1)}
+.icon-col{display:flex;flex-direction:column;align-items:center;gap:20px}
+.icon-col-lbl{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;text-align:center}
+.icon-sizes-row{display:flex;align-items:flex-end;gap:28px;padding:44px 48px;background:var(--d2);border:1px solid var(--gr1)}
+.isi{display:flex;flex-direction:column;align-items:center;gap:12px}
+.isi-lbl{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gr4);text-align:center;line-height:1.7}
+
+/* ══ LOGO GRID ══ */
+.logo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--gr1);border:1px solid var(--gr1)}
+.lc{padding:50px 28px 42px;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;position:relative}
+.lc-dk{background:var(--d1)} .lc-d2{background:var(--d2)} .lc-g{background:var(--g)}
+.lc-gd{background:var(--gd)} .lc-lt{background:#EDE8EC} .lc-wh{background:#F5F0F3}
+.lc-lbl{position:absolute;bottom:12px;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;opacity:.38}
+.wm{font-family:'Nunito',sans-serif;font-weight:800;font-size:22px;letter-spacing:-.3px}
+.li-dk{background:var(--d3);box-shadow:0 4px 24px rgba(0,0,0,.7)}
+
+/* ══ PALETTE ══ */
+.pal{display:grid;grid-template-columns:1.8fr 1.8fr 1fr 1fr 1fr 1fr;border:1px solid var(--gr1);overflow:hidden}
+.sw{display:flex;flex-direction:column;justify-content:flex-end;padding:28px 22px;min-height:210px;transition:min-height .3s}
+.sw:hover{min-height:228px}
+.sw-n{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.sw-h{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;opacity:.62}
+.sw-r{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.38;margin-top:3px}
+.sw1{background:linear-gradient(155deg,var(--gm),var(--gd));color:white}
+.sw2{background:linear-gradient(155deg,var(--td),#044E5C);color:white}
+.sw3{background:var(--bk);color:var(--gr4);border-right:1px solid var(--gr1)}
+.sw4{background:var(--d3);color:var(--gr4);border-right:1px solid var(--gr1)}
+.sw5{background:#DAD0D8;color:#333;border-right:1px solid #bbb}
+.sw6{background:#F4EEF2;color:#333}
+
+/* ══ PHONE FRAME ══ */
+.phone-frame{
+  width:280px;flex-shrink:0;
+  background:#111;border-radius:36px;
+  border:2px solid #2A2A2A;
+  box-shadow:0 24px 60px rgba(0,0,0,.8),0 0 0 1px #1A1A1A,inset 0 1px 0 rgba(255,255,255,.06);
+  overflow:hidden;position:relative;
+}
+.phone-notch{
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:80px;height:22px;background:#111;border-radius:0 0 14px 14px;z-index:10;
+}
+.phone-screen{
+  background:var(--bk);
+  padding-top:30px;
+  min-height:560px;
+  position:relative;
+  overflow:hidden;
+}
+.phone-status{display:flex;justify-content:space-between;align-items:center;padding:6px 18px 4px;font-size:11px;font-weight:600;color:var(--wh)}
+
+/* Phone screen components */
+.ps-header{
+  display:flex;align-items:center;gap:8px;padding:8px 14px 8px;
+  background:var(--d2);border-bottom:1px solid var(--gr1);
+}
+.ps-header-icon{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:radial-gradient(ellipse at 40% 30%,#8A1228,#3A0412);}
+.ps-brand{font-family:'Nunito',sans-serif;font-weight:700;font-size:13px}
+.ps-brand .p1{color:var(--wh)} .ps-brand .p2{color:var(--gr4);font-weight:400}
+.ps-counter{display:flex;align-items:center;gap:4px;background:var(--d3);border:1px solid var(--gr1);border-radius:12px;padding:3px 8px;font-size:10px;font-weight:700}
+.ps-counter.apag{color:var(--gb)} .ps-counter.agua{color:var(--tb)}
+.ps-envivo{background:var(--g);color:white;font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 7px;border-radius:2px;margin-left:auto}
+.ps-menu{width:28px;height:20px;display:flex;flex-direction:column;gap:4px;justify-content:center;margin-left:auto}
+.ps-menu span{display:block;height:2px;background:var(--gr4);border-radius:1px}
+/* Cards */
+.ps-card{background:var(--d2);border:1px solid var(--gr1);border-radius:12px;padding:16px;margin:0 12px 8px;cursor:pointer;transition:border-color .2s}
+.ps-card.apag-sel{border-color:var(--amb);background:rgba(245,166,35,.07)}
+.ps-card.agua-sel{border-color:var(--t);background:rgba(11,168,196,.07)}
+.ps-card-icon{font-size:24px;margin-bottom:8px}
+.ps-card-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;margin-bottom:2px}
+.ps-card-sub{font-size:11px;color:var(--gr4)}
+/* Search bar */
+.ps-search{display:flex;align-items:center;gap:8px;background:var(--d3);border:1px solid var(--gr1);border-radius:20px;padding:8px 14px;margin:10px 12px;font-size:12px;color:var(--gr4)}
+/* FAB */
+.ps-fab{width:48px;height:48px;border-radius:50%;background:var(--g);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px var(--gg);position:absolute;bottom:50px;right:16px}
+.ps-fab2{width:36px;height:36px;border-radius:50%;background:#1E1218;border:1px solid var(--gr2);display:flex;align-items:center;justify-content:center;position:absolute;bottom:105px;right:20px}
+/* Modal */
+.ps-modal{position:absolute;bottom:0;left:0;right:0;background:var(--d2);border-radius:18px 18px 0 0;border:1px solid rgba(101,8,31,.4);border-bottom:none;padding:20px 16px}
+.ps-modal-pill{width:36px;height:4px;background:var(--gr2);border-radius:2px;margin:0 auto 16px}
+.ps-progress{display:flex;gap:4px;margin-bottom:16px}
+.ps-progress-bar{height:2px;border-radius:1px;flex:1}
+.ps-progress-bar.active{background:var(--g)}
+.ps-progress-bar.done{background:var(--gb)}
+.ps-progress-bar.pending{background:var(--gr1)}
+/* List items */
+.ps-list-item{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--gr1)}
+.ps-list-item:last-child{border-bottom:none}
+.ps-list-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+/* Apagoncito chat */
+.chat-bubble{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.07);border-radius:12px 12px 12px 3px;padding:12px 14px;margin:0 12px 10px;font-size:12px;line-height:1.5;color:var(--gr5)}
+.chat-chips-row{display:flex;gap:6px;padding:0 12px;overflow:hidden;flex-wrap:nowrap;white-space:nowrap;margin-bottom:10px}
+.chat-chip{font-size:10px;font-weight:700;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:4px 10px;color:var(--gr5);flex-shrink:0}
+.chat-input-row{display:flex;align-items:center;gap:8px;padding:8px 12px;border-top:1px solid rgba(101,8,31,.2)}
+.chat-input-field{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:8px 14px;font-size:11px;color:var(--gr4)}
+.chat-send{width:32px;height:32px;border-radius:50%;background:var(--g);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+/* Toast banner */
+.ps-toast{background:#003D20;border:1px solid #006633;border-radius:20px;padding:8px 14px;margin:8px 12px;display:flex;align-items:center;gap:8px;font-size:11px;color:#00CC66}
+/* Map */
+.ps-map-area{height:180px;background:var(--d3);position:relative;overflow:hidden}
+.ps-map-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(11,168,196,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(11,168,196,.04) 1px,transparent 1px);background-size:14px 14px}
+/* severity buttons */
+.sev-btn{flex:1;padding:8px 4px;border:1px solid var(--gr2);border-radius:8px;text-align:center;font-size:11px;font-weight:700;color:var(--gr5);display:flex;align-items:center;justify-content:center;gap:5px}
+.sev-btn.active{border-color:var(--amb);color:var(--amb);background:rgba(245,166,35,.08)}
+/* input field */
+.ps-field{background:var(--d3);border:1px solid var(--gr1);border-radius:8px;padding:10px 12px;font-size:11px;color:var(--gr4);margin-bottom:6px}
+/* report btn */
+.ps-report-btn{border-radius:10px;padding:12px;text-align:center;font-weight:700;font-size:13px;font-family:'Barlow',sans-serif;letter-spacing:.5px}
+
+/* ══ SCREENS GRID ══ */
+.screens-row{display:flex;gap:32px;overflow-x:auto;padding-bottom:16px}
+.screen-item{display:flex;flex-direction:column;align-items:center;gap:16px;flex-shrink:0}
+.screen-label{font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;color:var(--wh);text-align:center}
+.screen-sub{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gr4);text-align:center}
+
+/* ══ MASCOT ══ */
+.mascot-glow-s{filter:drop-shadow(0 0 16px rgba(101,8,31,.55)) drop-shadow(0 0 40px rgba(101,8,31,.22));animation:mgs 3.5s ease-in-out infinite}
+@keyframes mgs{0%,100%{filter:drop-shadow(0 0 16px rgba(101,8,31,.55)) drop-shadow(0 0 40px rgba(101,8,31,.22))}50%{filter:drop-shadow(0 0 28px rgba(155,16,53,.8)) drop-shadow(0 0 65px rgba(101,8,31,.38))}}
+.exp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--gr1);border:1px solid var(--gr1)}
+.exp-cell{background:var(--d2);padding:32px 16px 28px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.exp-cell svg{overflow:visible}
+.exp-lbl{font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;color:var(--wh);text-align:center}
+.exp-sub{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gr4);text-align:center}
+
+/* ══ RULES ══ */
+.rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--gr1);border:1px solid var(--gr1)}
+.rc{background:var(--d2);padding:36px}
+.rb{display:inline-block;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:2px;margin-bottom:18px}
+.rb-do{background:rgba(0,180,70,.1);color:#00C452;border:1px solid rgba(0,180,70,.25)}
+.rb-dont{background:var(--gl);color:var(--gb);border:1px solid rgba(101,8,31,.4)}
+.rp{background:var(--d3);border-radius:6px;padding:26px;display:flex;align-items:center;justify-content:center;min-height:100px;margin-bottom:16px;position:relative}
+.rd{font-size:13px;color:var(--gr5);line-height:1.65}
+.xline{position:absolute;inset:0;background:linear-gradient(135deg,transparent 44%,rgba(155,16,53,.85) 47%,rgba(155,16,53,.85) 53%,transparent 56%);border-radius:inherit;pointer-events:none}
+
+/* ══ VOICE ══ */
+.voice-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:var(--gr1);border:1px solid var(--gr1)}
+.vc{background:var(--d2);padding:36px}
+.vc-icon{width:48px;height:48px;margin-bottom:16px}
+.vc-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:20px;margin-bottom:9px}
+.vc-desc{font-size:13px;font-weight:300;color:var(--gr5);line-height:1.75}
+.vc-ex{margin-top:16px;padding:12px 15px;background:var(--d3);border-left:2px solid var(--g);border-radius:0 3px 3px 0;font-size:12px;font-style:italic;color:var(--gr5);line-height:1.6}
+
+/* ══ FOOTER ══ */
+footer{background:var(--bk);border-top:1px solid var(--gr1);padding:52px 44px;text-align:center}
+.f-name{font-family:'Nunito',sans-serif;font-weight:900;font-size:22px;margin-bottom:10px}
+.f-name .f1{color:var(--wh)}
+.f-name .f2{background:linear-gradient(135deg,var(--gb),var(--g));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.f-ver{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gr2)}
+
+@media(max-width:820px){
+  .logo-grid,.g2,.g3,.rules-grid,.voice-grid,.exp-grid{grid-template-columns:1fr}
+  .pal{grid-template-columns:1fr 1fr 1fr}
+  .hero-brand{font-size:50px} .st{font-size:36px}
+}
+</style>
+</head>
+<body>
+
+<!-- SVG GLOBAL DEFS -->
+<svg width="0" height="0" style="position:absolute">
+<defs>
+  <!-- Guinda bolt gradient -->
+  <linearGradient id="bG" x1="14" y1="6" x2="38" y2="46" gradientUnits="userSpaceOnUse">
+    <stop offset="0%" stop-color="#9B1035"/>
+    <stop offset="100%" stop-color="#5C0120"/>
+  </linearGradient>
+  <!-- Yellow lightning -->
+  <linearGradient id="lG" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#FFF176"/>
+    <stop offset="45%" stop-color="#FFD700"/>
+    <stop offset="100%" stop-color="#E8970A"/>
+  </linearGradient>
+  <!-- Bulb gradient -->
+  <linearGradient id="bul" x1="80" y1="65" x2="145" y2="175" gradientUnits="userSpaceOnUse">
+    <stop offset="0%" stop-color="#FFE088"/>
+    <stop offset="40%" stop-color="#F5A623"/>
+    <stop offset="100%" stop-color="#C07B10"/>
+  </linearGradient>
+  <!-- Base gradient -->
+  <linearGradient id="bas" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+    <stop offset="0%" stop-color="#B8860B"/>
+    <stop offset="50%" stop-color="#DAA520"/>
+    <stop offset="100%" stop-color="#B8860B"/>
+  </linearGradient>
+  <!-- Aura -->
+  <radialGradient id="aura"><stop offset="0%" stop-color="#9B1035" stop-opacity=".55"/><stop offset="100%" stop-color="#9B1035" stop-opacity="0"/></radialGradient>
+  <!-- Inner glow -->
+  <radialGradient id="iglow" cx="50%" cy="38%"><stop offset="0%" stop-color="#FFF8CC" stop-opacity=".75"/><stop offset="100%" stop-color="#F5A623" stop-opacity="0"/></radialGradient>
+  <!-- IMPROVED APP ICON background -->
+  <radialGradient id="iconBg" cx="45%" cy="35%" r="70%">
+    <stop offset="0%" stop-color="#8A1228"/>
+    <stop offset="55%" stop-color="#65081F"/>
+    <stop offset="100%" stop-color="#3A0412"/>
+  </radialGradient>
+  <!-- Icon bolt improved gradient -->
+  <linearGradient id="iconBolt" x1="0" y1="0" x2="0.3" y2="1">
+    <stop offset="0%" stop-color="#FFE066"/>
+    <stop offset="30%" stop-color="#FFD700"/>
+    <stop offset="100%" stop-color="#E8970A"/>
+  </linearGradient>
+  <!-- Icon bolt glow -->
+  <filter id="boltGlow">
+    <feGaussianBlur stdDeviation="4" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <!-- Icon subtle top gloss -->
+  <linearGradient id="gloss" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="rgba(255,255,255,.18)"/>
+    <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+  </linearGradient>
+</defs>
+</svg>
+
+<!-- NAV -->
+<nav>
+  <div class="nb">
+    <svg width="26" height="26" viewBox="0 0 120 120" fill="none">
+      <rect width="120" height="120" rx="28" fill="url(#iconBg)"/>
+      <path d="M73 10L42 58H62L47 110L86 54H66Z" fill="url(#iconBolt)"/>
+    </svg>
+    <div class="nb-nm"><span class="n1">Apagones</span><span class="n2">Mid</span></div>
+  </div>
+  <div class="nd"></div>
+  <a href="#icono">Ícono</a>
+  <a href="#logo">Logo</a>
+  <a href="#colores">Colores</a>
+  <a href="#tipo">Tipo</a>
+  <a href="#pantallas">Pantallas</a>
+  <a href="#flujo">Flujo</a>
+  <a href="#menu">Menú</a>
+  <a href="#mascota">Apagoncito</a>
+  <a href="#voz">Voz</a>
+</nav>
+
+<!-- ══════ HERO ══════ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-rad"></div>
+  <div class="hero-vig"></div>
+  <div class="sparks" id="sparks"></div>
+  <div class="hero-c">
+    <div class="mascot-glow">
+      <svg width="190" height="248" viewBox="0 0 220 280" fill="none">
+        <ellipse cx="110" cy="270" rx="52" ry="8" fill="rgba(0,0,0,.35)"/>
+        <ellipse cx="110" cy="138" rx="88" ry="80" fill="url(#aura)" opacity=".45"/>
+        <!-- Arms -->
+        <path d="M68 162 Q46 154 30 142 Q22 137 25 128 Q28 119 36 123 Q52 132 66 148" fill="#F5A623" stroke="#2C1A00" stroke-width="3.5" stroke-linejoin="round"/>
+        <circle cx="28" cy="128" r="11" fill="#F5A623" stroke="#2C1A00" stroke-width="3.5"/>
+        <line x1="18" y1="122" x2="14" y2="112" stroke="#F5A623" stroke-width="9" stroke-linecap="round"/><line x1="18" y1="122" x2="14" y2="112" stroke="#2C1A00" stroke-width="3" stroke-linecap="round"/>
+        <line x1="24" y1="118" x2="22" y2="107" stroke="#F5A623" stroke-width="9" stroke-linecap="round"/><line x1="24" y1="118" x2="22" y2="107" stroke="#2C1A00" stroke-width="3" stroke-linecap="round"/>
+        <line x1="30" y1="117" x2="31" y2="106" stroke="#F5A623" stroke-width="9" stroke-linecap="round"/><line x1="30" y1="117" x2="31" y2="106" stroke="#2C1A00" stroke-width="3" stroke-linecap="round"/>
+        <path d="M152 162 Q174 154 190 142 Q198 137 195 128 Q192 119 184 123 Q168 132 154 148" fill="#F5A623" stroke="#2C1A00" stroke-width="3.5" stroke-linejoin="round"/>
+        <circle cx="192" cy="128" r="11" fill="#F5A623" stroke="#2C1A00" stroke-width="3.5"/>
+        <line x1="202" y1="122" x2="206" y2="112" stroke="#F5A623" stroke-width="9" stroke-linecap="round"/><line x1="202" y1="122" x2="206" y2="112" stroke="#2C1A00" stroke-width="3" stroke-linecap="round"/>
+        <line x1="196" y1="118" x2="198" y2="107" stroke="#F5A623" stroke-width="9" stroke-linecap="round"/><line x1="196" y1="118" x2="198" y2="107" stroke="#2C1A00" stroke-width="3" stroke-linecap="round"/>
+        <line x1="190" y1="117" x2="189" y2="106" stroke="#F5A623" stroke-width="9" stroke-linecap="round"/><line x1="190" y1="117" x2="189" y2="106" stroke="#2C1A00" stroke-width="3" stroke-linecap="round"/>
+        <ellipse cx="110" cy="132" rx="54" ry="54" fill="url(#iglow)" opacity=".55"/>
+        <!-- Bulb -->
+        <path d="M64 158 Q60 112 77 84 Q91 58 110 54 Q129 58 143 84 Q160 112 156 158 Q151 173 148 180 L72 180 Q69 173 64 158Z" fill="url(#bul)" stroke="#2C1A00" stroke-width="4" stroke-linejoin="round"/>
+        <ellipse cx="90" cy="97" rx="16" ry="24" fill="rgba(255,255,255,.32)" transform="rotate(-18,90,97)"/>
+        <ellipse cx="83" cy="89" rx="7" ry="10" fill="rgba(255,255,255,.48)" transform="rotate(-18,83,89)"/>
+        <!-- Brows -->
+        <path d="M74 108 Q89 98 106 104" stroke="#2C1A00" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <path d="M114 104 Q131 98 146 108" stroke="#2C1A00" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <!-- Eyes -->
+        <ellipse cx="90" cy="133" rx="21" ry="23" fill="white" stroke="#2C1A00" stroke-width="3.5" class="eye-b" style="transform-origin:90px 133px"/>
+        <circle cx="92" cy="135" r="14" fill="#6B3A00"/><circle cx="93" cy="136" r="9" fill="#0A0A0A"/><circle cx="99" cy="128" r="5" fill="white"/><circle cx="86" cy="139" r="2.5" fill="white" opacity=".65"/>
+        <ellipse cx="130" cy="133" rx="21" ry="23" fill="white" stroke="#2C1A00" stroke-width="3.5" class="eye-b" style="transform-origin:130px 133px;animation-delay:.08s"/>
+        <circle cx="132" cy="135" r="14" fill="#6B3A00"/><circle cx="133" cy="136" r="9" fill="#0A0A0A"/><circle cx="139" cy="128" r="5" fill="white"/><circle cx="126" cy="139" r="2.5" fill="white" opacity=".65"/>
+        <!-- Cheeks -->
+        <ellipse cx="68" cy="152" rx="15" ry="10" fill="rgba(240,80,50,.28)"/>
+        <ellipse cx="152" cy="152" rx="15" ry="10" fill="rgba(240,80,50,.28)"/>
+        <!-- Mouth with teeth -->
+        <path d="M84 161 Q110 182 136 161" fill="#2C1A00" stroke="#2C1A00" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M87 163 Q110 180 133 163 Q120 174 110 174 Q100 174 87 163Z" fill="white"/>
+        <line x1="110" y1="163" x2="110" y2="173" stroke="#2C1A00" stroke-width="2"/>
+        <line x1="97" y1="164" x2="97" y2="172" stroke="#2C1A00" stroke-width="1.5"/>
+        <line x1="123" y1="164" x2="123" y2="172" stroke="#2C1A00" stroke-width="1.5"/>
+        <!-- Base -->
+        <rect x="83" y="178" width="54" height="10" rx="5" fill="#DAA520" stroke="#2C1A00" stroke-width="3"/>
+        <rect x="77" y="188" width="66" height="13" rx="4" fill="#C49A2A" stroke="#2C1A00" stroke-width="3"/>
+        <line x1="83" y1="193" x2="137" y2="193" stroke="rgba(0,0,0,.22)" stroke-width="1.5"/>
+        <rect x="80" y="201" width="60" height="12" rx="4" fill="#A07D22" stroke="#2C1A00" stroke-width="3"/>
+        <circle cx="110" cy="218" r="9" fill="url(#bG)" stroke="#2C1A00" stroke-width="3"/>
+        <!-- Crown bolt lightning -->
+        <path d="M120 6 L104 34 H116 L100 62 L128 30 H116 Z" fill="url(#lG)" stroke="#2C1A00" stroke-width="3.5" stroke-linejoin="round"/>
+        <path d="M116 12 L108 28 H116" stroke="rgba(255,255,255,.55)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <!-- Sparkles -->
+        <path d="M44 52 L47 43 L50 52 L59 49 L50 58 L47 67 L44 58 L35 55 Z" fill="#FFD700" stroke="#2C1A00" stroke-width="2.5"/>
+        <path d="M166 46 L169 39 L172 46 L179 43 L172 51 L169 59 L166 51 L159 48 Z" fill="#FFD700" stroke="#2C1A00" stroke-width="2.5"/>
+        <circle cx="32" cy="88" r="6" fill="var(--gb)" stroke="#2C1A00" stroke-width="2.5"/>
+        <circle cx="188" cy="82" r="5" fill="var(--gb)" stroke="#2C1A00" stroke-width="2.5"/>
+      </svg>
+    </div>
+    <div class="hero-brand"><span class="h1">Apagones</span><span class="h2">Mid</span></div>
+    <div class="hero-tl">Manual de Identidad Visual &middot; v4.0 &middot; 2025</div>
+    <p class="hero-desc">La plataforma ciudadana de monitoreo de apagones y fugas de agua en Mérida, Yucatán. Guía oficial de marca, activos y componentes.</p>
+    <div class="hero-chips">
+      <div class="hchip">v4.0 &middot; 2025</div>
+      <div class="hchip">iOS + Android</div>
+      <div class="hchip">Mérida &middot; Yucatán &middot; México</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ 01 ÍCONO ══════ -->
+<section id="icono">
+<div class="wrap">
+  <div class="rv">
+    <div class="sl">01 — App Icon</div>
+    <h2 class="st">Ícono de Aplicación</h2>
+    <div class="sr"></div>
+    <p class="ss">El rayo dorado sobre fondo guinda: reconocible en cualquier launcher, tamaño o contexto. El gradiente radial del fondo crea profundidad y el bolt tiene peso visual propio.</p>
+  </div>
+
+  <!-- Main icon showcase -->
+  <div class="icon-comparison rv d1">
+    <!-- Hero icon big -->
+    <div class="icon-col" style="gap:12px">
+      <svg width="160" height="160" viewBox="0 0 120 120" fill="none" style="filter:drop-shadow(0 12px 40px rgba(92,1,32,.65)) drop-shadow(0 0 80px rgba(92,1,32,.3))">
+        <rect width="120" height="120" rx="28" fill="url(#iconBg)"/>
+        <path d="M0 0 H120 V38 Q60 52 0 38 Z" fill="url(#gloss)" opacity=".6"/>
+        <ellipse cx="60" cy="62" rx="28" ry="34" fill="#FFD700" opacity=".12"/>
+        <path d="M73 10 L42 58 H62 L47 110 L86 54 H66 Z" fill="url(#iconBolt)" stroke="rgba(180,100,0,.2)" stroke-width="1"/>
+        <path d="M66 20 L50 52 H64 L52 92" stroke="rgba(255,255,255,.45)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div style="text-align:center">
+        <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:18px"><span style="color:var(--wh)">Apagones</span><span style="color:var(--gr4);font-weight:400"> Mid</span></div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gr3);margin-top:4px">Versión oficial 2025</div>
+      </div>
+    </div>
+    <!-- Spec annotations -->
+    <div style="flex:1;min-width:260px;display:flex;flex-direction:column;gap:16px;padding-top:8px">
+      <div class="tc-lbl" style="margin-bottom:4px">Especificaciones del ícono</div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="background:var(--d3);border:1px solid var(--gr1);border-radius:8px;padding:14px 16px;display:flex;align-items:flex-start;gap:12px">
+          <div style="width:32px;height:32px;border-radius:8px;background:url(#iconBg);flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--gd)">
+            <svg width="18" height="18" viewBox="0 0 120 120" fill="none"><path d="M73 10L42 58H62L47 110L86 54H66Z" fill="#FFD700"/></svg>
+          </div>
+          <div><div style="font-weight:700;font-size:13px;margin-bottom:3px">Bolt dorado centrado</div><div style="font-size:12px;color:var(--gr4)">Gradiente <span style="font-family:monospace">#FFF176 → #FFD700 → #E8970A</span>. Highlight interno blanco al 45%.</div></div>
+        </div>
+        <div style="background:var(--d3);border:1px solid var(--gr1);border-radius:8px;padding:14px 16px;display:flex;align-items:flex-start;gap:12px">
+          <div style="width:32px;height:32px;border-radius:8px;flex-shrink:0;background:linear-gradient(155deg,#8A1228,#3A0412);"></div>
+          <div><div style="font-weight:700;font-size:13px;margin-bottom:3px">Fondo radial guinda</div><div style="font-size:12px;color:var(--gr4)">Centro <span style="font-family:monospace">#8A1228</span> · Borde <span style="font-family:monospace">#3A0412</span>. Crea profundidad sin textura.</div></div>
+        </div>
+        <div style="background:var(--d3);border:1px solid var(--gr1);border-radius:8px;padding:14px 16px;display:flex;align-items:flex-start;gap:12px">
+          <div style="width:32px;height:32px;border-radius:8px;flex-shrink:0;background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,0));"></div>
+          <div><div style="font-weight:700;font-size:13px;margin-bottom:3px">Gloss superior + radio 28px</div><div style="font-size:12px;color:var(--gr4)">Reflejo blanco al 18% en el tercio superior. Squircle 28px consistente con iOS/Android.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- All sizes -->
+  <div class="icon-sizes-row rv d1" style="margin-top:2px">
+    <div class="isi">
+      <svg width="120" height="120" viewBox="0 0 120 120" fill="none"><rect width="120" height="120" rx="28" fill="url(#iconBg)"/><path d="M0 0H120V38Q60 52 0 38Z" fill="url(#gloss)" opacity=".6"/><ellipse cx="60" cy="62" rx="28" ry="34" fill="#FFD700" opacity=".12"/><path d="M73 10L42 58H62L47 110L86 54H66Z" fill="url(#iconBolt)" filter="url(#boltGlow)"/><path d="M66 20L50 52H64L52 92" stroke="rgba(255,255,255,.45)" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg>
+      <div class="isi-lbl">1024×1024<br>App Store</div>
+    </div>
+    <div class="isi">
+      <svg width="88" height="88" viewBox="0 0 120 120" fill="none"><rect width="120" height="120" rx="28" fill="url(#iconBg)"/><path d="M0 0H120V38Q60 52 0 38Z" fill="url(#gloss)" opacity=".6"/><ellipse cx="60" cy="62" rx="28" ry="34" fill="#FFD700" opacity=".12"/><path d="M73 10L42 58H62L47 110L86 54H66Z" fill="url(#iconBolt)" filter="url(#boltGlow)"/><path d="M66 20L50 52H64L52 92" stroke="rgba(255,255,255,.45)" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg>
+      <div class="isi-lbl">180×180<br>iPhone @3x</div>
+    </div>
+    <div class="isi">
+      <svg width="64" height="64" viewBox="0 0 120 120" fill="none"><rect width="120" height="120" rx="28" fill="url(#iconBg)"/><path d="M0 0H120V38Q60 52 0 38Z" fill="url(#gloss)" opacity=".6"/><ellipse cx="60" cy="62" rx="28" ry="34" fill="#FFD700" opacity=".12"/><path d="M73 10L42 58H62L47 110L86 54H66Z" fill="url(#iconBolt)"/><path d="M66 20L50 52H64L52 92" stroke="rgba(255,255,255,.45)" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg>
+      <div class="isi-lbl">120×120<br>iPhone @2x</div>
+    </div>
+    <div class="isi">
+      <svg width="48" height="48" viewBox="0 0 120 120" fill="none"><rect width="120" height="120" rx="28" fill="url(#iconBg)"/><ellipse cx="60" cy="62" rx="28" ry="34" fill="#FFD700" opacity=".12"/><path d="M73 10L42 58H62L47 110L86 54H66Z" fill="url(#iconBolt)"/></svg>
+      <div class="isi-lbl">76×76<br>iPad</div>
+    </div>
+    <div class="isi">
+      <svg width="36" height="36" viewBox="0 0 120 120" fill="none"><rect width="120" height="120" rx="28" fill="url(#iconBg)"/><path d="M73 10L42 58H62L47 110L86 54H66Z" fill="url(#iconBolt)"/></svg>
+      <div class="isi-lbl">48×48<br>Android</div>
+    </div>
+    <div class="isi">
+      <svg width="24" height="24" viewBox="0 0 120 120" fill="none"><rect width="120" height="120" rx="28" fill="url(#iconBg)"/><path d="M73 10L42 58H62L47 110L86 54H66Z" fill="#FFD700"/></svg>
+      <div class="isi-lbl">24×24<br>Notificación</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════ 02 LOGO ══════ -->
+<section id="logo">
+<div class="wrap">
+  <div class="rv">
+    <div class="sl">02 — Logotipo</div>
+    <h2 class="st">Sistema de Marca</h2>
+    <div class="sr"></div>
+    <p class="ss">El ícono de rayo y el wordmark <em>Apagones</em> Bold + <em>Mid</em> Light. La jerarquía tipográfica es parte del logo. No modificar pesos, colores ni separación.</p>
+  </div>
+  <div class="logo-grid rv d1">
+    <!-- Versión Principal oscuro -->
+    <div class="lc lc-dk">
+      <div style="display:flex;align-items:center;gap:14px">
+        <svg width="56" height="56" viewBox="0 0 120 120" fill="none">
+          <rect width="120" height="120" rx="28" fill="url(#iconBg)"/>
+          <path d="M0 0H120V38Q60 52 0 38Z" fill="url(#gloss)" opacity=".55"/>
+          <ellipse cx="60" cy="62" rx="28" ry="34" fill="#FFD700" opacity=".1"/>
+          <path d="M73 10L42 58H62L47 110L86 54H66Z" fill="url(#iconBolt)"/>
+          <path d="M66 20L50 52H64L52 92" stroke="rgba(255,255,255,.4)" stroke-width="2" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div>
+          <div class="wm"><span style="color:var(--wh)">Apagones</span><span style="color:var(--gr4);font-weight:400"> Mid</span></div>
+          <div style="font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gr3);margin-top:3px">¿Sin luz o sin agua?</div>
+        </div>
+      </div>
+      <div class="lc-lbl" style="color:var(--gr4)">Versión Principal</div>
+    </div>
+    <!-- Ícono Solo -->
+    <div class="lc lc-d2">
+      <svg width="88" height="88" viewBox="0 0 120 120" fill="none">
+        <rect width="120" height="120" rx="28" fill="url(#iconBg)"/>
+        <path d="M0 0H120V38Q60 52 0 38Z" fill="url(#gloss)" opacity=".55"/>
+        <ellipse cx="60" cy="62" rx="28" ry="34" fill="#FFD700" opacity=".1"/>
+        <path d="M73 10L42 58H62L47 110L86 54H66Z" fill="url(#iconBolt)"/>
+        <path d="M66 20L50 52H64L52 92" stroke="rgba(255,255,255,.4)" stroke-width="2" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="lc-lbl" style="color:var(--gr4)">Ícono Solo</div>
+    </div>
+    <!-- Fondo Guinda — ícono sobre guinda sin squircle bg -->
+    <div class="lc lc-g">
+      <svg width="64" height="64" viewBox="0 0 120 120" fill="none">
+        <rect width="120" height="120" rx="28" fill="rgba(0,0,0,.35)"/>
+        <path d="M73 10L42 58H62L47 110L86 54H66Z" fill="url(#iconBolt)"/>
+        <path d="M66 20L50 52H64L52 92" stroke="rgba(255,255,255,.35)" stroke-width="2" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="lc-lbl" style="color:rgba(255,255,255,.4)">Fondo Guinda</div>
+    </div>
+    <!-- Fondo Claro -->
+    <div class="lc lc-lt">
+      <div style="display:flex;align-items:center;gap:12px">
+        <svg width="48" height="48" viewBox="0 0 120 120" fill="none">
+          <rect width="120" height="120" rx="28" fill="url(#iconBg)"/>
+          <path d="M73 10L42 58H62L47 110L86 54H66Z" fill="url(#iconBolt)"/>
+          <path d="M66 20L50 52H64L52 92" stroke="rgba(255,255,255,.4)" stroke-width="2" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div>
+          <div class="wm" style="color:#111">Apagones<span style="color:var(--g);font-weight:400"> Mid</span></div>
+          <div style="font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#888;margin-top:3px">Mérida, Yucatán</div>
+        </div>
+      </div>
+      <div class="lc-lbl" style="color:#666">Fondo Claro</div>
+    </div>
+    <!-- Variante Guinda — ícono con bolt blanco -->
+    <div class="lc lc-wh">
+      <svg width="64" height="64" viewBox="0 0 120 120" fill="none">
+        <rect width="120" height="120" rx="28" fill="var(--g)"/>
+        <path d="M0 0H120V38Q60 52 0 38Z" fill="rgba(255,255,255,.12)" opacity=".8"/>
+        <path d="M73 10L42 58H62L47 110L86 54H66Z" fill="white"/>
+        <path d="M66 20L50 52H64L52 92" stroke="rgba(101,8,31,.4)" stroke-width="2" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="lc-lbl" style="color:#666">Variante Guinda</div>
+    </div>
+    <!-- Negativo -->
+    <div class="lc lc-gd">
+      <div style="display:flex;align-items:center;gap:12px">
+        <svg width="26" height="26" viewBox="0 0 52 52" fill="none">
+          <path d="M30 6L14 28H26L22 46L38 24H26L30 6Z" fill="url(#lG)"/>
+        </svg>
+        <div class="wm" style="color:rgba(255,255,255,.85)">Apagones<span style="opacity:.5;font-weight:400"> Mid</span></div>
+      </div>
+      <div class="lc-lbl" style="color:rgba(255,255,255,.32)">Negativo</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════ 03 COLORES ══════ -->
+<section id="colores">
+<div class="wrap">
+  <div class="rv">
+    <div class="sl">03 — Colores</div>
+    <h2 class="st">Paleta de Marca</h2>
+    <div class="sr"></div>
+    <p class="ss">Guinda como color primario de la plataforma energética. Teal para la categoría de agua. Ambos sobre negro profundo.</p>
+  </div>
+  <div class="pal rv">
+    <div class="sw sw1"><div class="sw-n">Guinda</div><div class="sw-h">#65081F · #5C0120</div><div class="sw-r">Primario · Energía · UI</div></div>
+    <div class="sw sw2"><div class="sw-n">Teal</div><div class="sw-h">#0BA8C4 · #077E94</div><div class="sw-r">Agua · Secundario</div></div>
+    <div class="sw sw3"><div class="sw-n">Noche</div><div class="sw-h">#060406</div><div class="sw-r">Fondo base</div></div>
+    <div class="sw sw4"><div class="sw-n">Carbón</div><div class="sw-h">#1C1218</div><div class="sw-r">Superficies</div></div>
+    <div class="sw sw5"><div class="sw-n">Ceniza</div><div class="sw-h">#DACC D8</div><div class="sw-r">Texto 2°</div></div>
+    <div class="sw sw6"><div class="sw-n">Marfil</div><div class="sw-h">#F4EEF2</div><div class="sw-r">Texto principal</div></div>
+  </div>
+  <!-- Status + Severity -->
+  <div class="rv d1" style="margin-top:2px">
+    <div class="g2">
+      <div class="cell">
+        <div class="tc-lbl" style="margin-bottom:20px">Estados del sistema</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:center;gap:12px"><div style="width:40px;height:10px;background:var(--gb);border-radius:2px"></div><div style="font-size:12px;color:var(--gr5)"><strong style="color:var(--wh)">En acción</strong> — Incidente activo</div></div>
+          <div style="display:flex;align-items:center;gap:12px"><div style="width:40px;height:10px;background:#B87000;border-radius:2px"></div><div style="font-size:12px;color:var(--gr5)"><strong style="color:var(--wh)">Aviso</strong> — Evento programado</div></div>
+          <div style="display:flex;align-items:center;gap:12px"><div style="width:40px;height:10px;background:#007A40;border-radius:2px"></div><div style="font-size:12px;color:var(--gr5)"><strong style="color:var(--wh)">Estable</strong> — Servicios normales</div></div>
+          <div style="display:flex;align-items:center;gap:12px"><div style="width:40px;height:10px;background:var(--gr3);border-radius:2px"></div><div style="font-size:12px;color:var(--gr5)"><strong style="color:var(--wh)">Resuelto</strong> — Atendido</div></div>
+        </div>
+      </div>
+      <div class="cell">
+        <div class="tc-lbl" style="margin-bottom:20px">Colores de severidad (Formulario)</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:center;gap:12px"><div style="width:14px;height:14px;border-radius:50%;background:#22C55E"></div><div style="font-size:12px;color:var(--gr5)"><strong style="color:var(--wh)">Leve</strong> — Sin urgencia inmediata</div></div>
+          <div style="display:flex;align-items:center;gap:12px"><div style="width:14px;height:14px;border-radius:50%;background:#EAB308"></div><div style="font-size:12px;color:var(--gr5)"><strong style="color:var(--wh)">Moderado</strong> — Atención pronto</div></div>
+          <div style="display:flex;align-items:center;gap:12px"><div style="width:14px;height:14px;border-radius:50%;background:#EF4444"></div><div style="font-size:12px;color:var(--gr5)"><strong style="color:var(--wh)">Crítico</strong> — Requiere atención ya</div></div>
+        </div>
+        <div style="background:var(--d3);border:1px solid var(--gr1);border-radius:8px;padding:14px;margin-top:20px;font-size:12px;color:var(--gr5);line-height:1.6">
+          <strong style="color:var(--wh)">Amarillo dorado</strong> <span style="font-family:monospace;font-size:10px;color:var(--gr4)">#F5A623</span> — Íconos de energía (rayo) y Apagoncito. No usar como color de estado.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════ 04 TIPOGRAFÍA ══════ -->
+<section id="tipo">
+<div class="wrap">
+  <div class="rv">
+    <div class="sl">04 — Tipografía</div>
+    <h2 class="st">Sistema Tipográfico</h2>
+    <div class="sr"></div>
+    <p class="ss">Nunito para marca y mascota. Barlow para toda la interfaz. La dicotomía Bold + Light en el wordmark es parte de la identidad.</p>
+  </div>
+  <div class="g2 rv">
+    <div class="cell">
+      <div class="tc-lbl">Nunito — Marca &amp; Mascota</div>
+      <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:64px;line-height:.95">Apagones</div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gr4);margin-top:14px">Nunito Black 900 · Wordmark · Apagoncito</div>
+    </div>
+    <div class="cell">
+      <div class="tc-lbl">Barlow — Interfaz &amp; Cuerpo</div>
+      <div style="font-family:'Barlow',sans-serif;font-weight:700;font-size:40px;line-height:1">Sin luz <span style="font-weight:300;color:var(--gr4)">en tu zona</span></div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gr4);margin-top:14px">Barlow 300 / 400 / 600 / 700</div>
+    </div>
+  </div>
+  <div class="cell rv d1" style="margin-top:2px">
+    <div style="border-bottom:1px solid var(--gr1);padding:13px 0;display:flex;align-items:baseline;gap:16px">
+      <div style="width:88px;flex-shrink:0;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gb)">Display</div>
+      <div style="width:90px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--gr4)">52px · Nunito</div>
+      <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:40px;line-height:1">¿Qué está pasando?</div>
+    </div>
+    <div style="border-bottom:1px solid var(--gr1);padding:13px 0;display:flex;align-items:baseline;gap:16px">
+      <div style="width:88px;flex-shrink:0;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gb)">H1</div>
+      <div style="width:90px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--gr4)">26px · 700</div>
+      <div style="font-family:'Barlow',sans-serif;font-weight:700;font-size:26px">Selecciona el tipo de incidencia</div>
+    </div>
+    <div style="border-bottom:1px solid var(--gr1);padding:13px 0;display:flex;align-items:baseline;gap:16px">
+      <div style="width:88px;flex-shrink:0;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gb)">Body</div>
+      <div style="width:90px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--gr4)">14px · 400</div>
+      <div style="font-size:14px;color:var(--gr5)">Apagón en casa o alumbrado público. Fuga, corte, presión o calidad.</div>
+    </div>
+    <div style="padding:13px 0;display:flex;align-items:baseline;gap:16px">
+      <div style="width:88px;flex-shrink:0;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gb)">Caption</div>
+      <div style="width:90px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--gr4)">10px · 700</div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gr4)">1 reporte activo · Toca para ver</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════ 05 PANTALLAS ══════ -->
+<section id="pantallas">
+<div class="wrap">
+  <div class="rv">
+    <div class="sl">05 — Pantallas Principales</div>
+    <h2 class="st">La App en Contexto</h2>
+    <div class="sr"></div>
+    <p class="ss">Las tres pantallas núcleo de la experiencia: bienvenida con Apagoncito, el mapa en vivo y el panel de asistente.</p>
+  </div>
+
+  <div class="screens-row rv">
+    <!-- Screen 1: Home / Welcome -->
+    <div class="screen-item">
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="phone-status"><span>4:02</span><span>▪▪▪ ⚡ 52</span></div>
+          <!-- Logo -->
+          <div style="display:flex;align-items:center;justify-content:center;gap:10px;padding:16px 0 8px">
+            <svg width="30" height="30" viewBox="0 0 120 120" fill="none"><rect width="120" height="120" rx="28" fill="url(#iconBg)"/><path d="M73 10L42 58H62L47 110L86 54H66Z" fill="url(#iconBolt)"/></svg>
+            <span style="font-family:'Nunito',sans-serif;font-weight:900;font-size:18px"><span style="color:var(--wh)">Apagones</span><span style="color:var(--gr4);font-weight:400"> MX</span></span>
+          </div>
+          <!-- Apagoncito small -->
+          <div style="display:flex;justify-content:center;padding:8px 0 4px">
+            <svg width="120" height="88" viewBox="0 0 240 170" fill="none">
+              <!-- bolt left -->
+              <path d="M58 85 L42 58 L52 58 L38 30 L68 62 H56 Z" fill="#F5A623" stroke="#2C1A00" stroke-width="2.5" stroke-linejoin="round"/>
+              <!-- body -->
+              <circle cx="120" cy="80" r="38" fill="#8B4513"/>
+              <circle cx="120" cy="80" r="36" fill="#A0522D"/>
+              <!-- hat/shadow top -->
+              <ellipse cx="120" cy="44" rx="30" ry="8" fill="#5C3310"/>
+              <!-- face -->
+              <circle cx="108" cy="76" r="8" fill="white"/><circle cx="108" cy="76" r="5" fill="#1A0A00"/><circle cx="110" cy="74" r="2" fill="white"/>
+              <circle cx="132" cy="76" r="8" fill="white"/><circle cx="132" cy="76" r="5" fill="#1A0A00"/><circle cx="134" cy="74" r="2" fill="white"/>
+              <ellipse cx="99" cy="87" rx="7" ry="4" fill="rgba(200,60,30,.3)"/>
+              <ellipse cx="141" cy="87" rx="7" ry="4" fill="rgba(200,60,30,.3)"/>
+              <path d="M108 92 Q120 102 132 92" stroke="#2C1A00" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+              <!-- arms -->
+              <path d="M84 80 Q65 70 55 75 Q50 78 52 83 Q54 88 60 86 Q72 82 82 80Z" fill="#A0522D" stroke="#5C3310" stroke-width="2"/>
+              <path d="M156 80 Q175 70 185 75 Q190 78 188 83 Q186 88 180 86 Q168 82 158 80Z" fill="#A0522D" stroke="#5C3310" stroke-width="2"/>
+              <!-- shirt -->
+              <ellipse cx="120" cy="108" rx="28" ry="18" fill="var(--g)"/>
+              <!-- water drop right -->
+              <path d="M200 50 Q200 34 188 28 Q176 34 176 50 Q176 60 188 65 Q200 60 200 50Z" fill="var(--tb)" stroke="#2C1A00" stroke-width="2.5"/>
+              <circle cx="185" cy="48" r="4" fill="rgba(255,255,255,.4)"/>
+            </svg>
+          </div>
+          <div style="display:flex;justify-content:center;gap:24px;padding:4px 0 12px">
+            <span style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--amb)">APAGÓN</span>
+            <span style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--tb)">FUGA / SIN AGUA</span>
+          </div>
+          <div style="height:1px;background:var(--gr1);margin:0 16px"></div>
+          <div style="padding:14px 16px 8px">
+            <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;text-align:center;margin-bottom:3px">¿Qué está pasando?</div>
+            <div style="font-size:11px;color:var(--gr4);text-align:center;margin-bottom:14px">Selecciona el tipo de incidencia</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+              <div class="ps-card" style="text-align:center">
+                <div style="font-size:26px;margin-bottom:6px;color:var(--amb)">⚡</div>
+                <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:14px;color:var(--amb)">SIN LUZ</div>
+                <div style="font-size:10px;color:var(--gr4);margin-top:2px">Apagón en casa o alumbrado público</div>
+              </div>
+              <div class="ps-card" style="text-align:center">
+                <div style="font-size:26px;margin-bottom:6px;color:var(--tb)">💧</div>
+                <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:14px;color:var(--tb)">SIN AGUA</div>
+                <div style="font-size:10px;color:var(--gr4);margin-top:2px">Fuga, corte, presión o calidad</div>
+              </div>
+            </div>
+          </div>
+          <div style="padding:0 16px;margin-top:8px">
+            <div style="background:var(--d3);border:1px solid var(--gr1);border-radius:20px;padding:11px;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;color:var(--gr4)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="var(--gr4)" stroke-width="1.5"/><line x1="4.22" y1="4.22" x2="19.78" y2="19.78" stroke="var(--gr4)" stroke-width="1.5"/></svg>
+              Ver zonas afectadas
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="screen-label">Bienvenida</div>
+      <div class="screen-sub">Home · Reporte rápido</div>
+    </div>
+
+    <!-- Screen 2: Map -->
+    <div class="screen-item">
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="phone-status"><span>4:02</span><span>▪▪▪ ⚡ 52</span></div>
+          <div class="ps-header">
+            <div class="ps-header-icon"><svg width="14" height="14" viewBox="0 0 52 52" fill="none"><path d="M30 6L14 28H26L22 46L38 24H26L30 6Z" fill="white"/></svg></div>
+            <div class="ps-brand"><span class="p1">Apagones</span><span class="p2"> Mid</span></div>
+            <div class="ps-counter apag"><svg width="10" height="10" viewBox="0 0 52 52" fill="none"><path d="M30 6L14 28H26L22 46L38 24H26L30 6Z" fill="var(--gb)"/></svg>⚡ 0</div>
+            <div class="ps-counter agua">💧 6</div>
+            <div class="ps-menu" style="margin-left:auto"><span></span><span></span><span></span></div>
+          </div>
+          <div class="ps-search"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="var(--gr4)" stroke-width="1.5"/><path d="M21 21l-4.35-4.35" stroke="var(--gr4)" stroke-width="1.5" stroke-linecap="round"/></svg>Buscar colonia o calle...</div>
+          <!-- Map area -->
+          <div class="ps-map-area" style="flex:1;height:340px">
+            <div class="ps-map-grid"></div>
+            <!-- Road lines -->
+            <svg style="position:absolute;inset:0" width="280" height="340" fill="none">
+              <line x1="140" y1="0" x2="140" y2="340" stroke="#1A1A1A" stroke-width="2"/>
+              <line x1="0" y1="170" x2="280" y2="170" stroke="#1A1A1A" stroke-width="2"/>
+              <line x1="70" y1="0" x2="70" y2="340" stroke="#141414" stroke-width="1.5"/>
+              <line x1="210" y1="0" x2="210" y2="340" stroke="#141414" stroke-width="1.5"/>
+              <line x1="0" y1="85" x2="280" y2="85" stroke="#141414" stroke-width="1.5"/>
+              <line x1="0" y1="255" x2="280" y2="255" stroke="#141414" stroke-width="1.5"/>
+              <line x1="105" y1="0" x2="105" y2="340" stroke="#111" stroke-width="1"/>
+              <line x1="175" y1="0" x2="175" y2="340" stroke="#111" stroke-width="1"/>
+              <!-- Teal zones -->
+              <rect x="115" y="60" width="45" height="30" rx="4" fill="rgba(11,168,196,.2)" stroke="var(--t)" stroke-width="1.5"/>
+              <rect x="85" y="170" width="35" height="55" rx="4" fill="rgba(11,168,196,.15)" stroke="var(--t)" stroke-width="1"/>
+              <rect x="185" y="195" width="55" height="25" rx="4" fill="rgba(11,168,196,.15)" stroke="var(--t)" stroke-width="1"/>
+              <!-- Water pin -->
+              <path d="M138 48 Q138 38 130 34 Q122 38 122 48 Q122 54 130 57 Q138 54 138 48Z" fill="var(--t)"/>
+              <circle cx="130" cy="47" r="4" fill="white" opacity=".8"/>
+              <!-- Mérida label -->
+              <text x="140" y="220" text-anchor="middle" font-size="13" font-weight="600" fill="rgba(255,255,255,.25)" font-family="Barlow,sans-serif">MÉRIDA</text>
+            </svg>
+            <!-- FAB 2 -->
+            <div class="ps-fab2">
+              <svg width="18" height="18" viewBox="0 0 120 120" fill="none"><rect width="120" height="120" rx="28" fill="url(#iconBg)"/><path d="M73 10L42 58H62L47 110L86 54H66Z" fill="url(#iconBolt)"/></svg>
+            </div>
+            <!-- FAB -->
+            <div class="ps-fab">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 5V19M5 12H19" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg>
+            </div>
+          </div>
+          <!-- Bottom pill -->
+          <div style="padding:10px 16px">
+            <div style="background:var(--d3);border:1px solid var(--gr1);border-radius:20px;padding:7px 14px;display:flex;align-items:center;gap:6px;justify-content:center;font-size:11px;font-weight:600;color:var(--gr5)">
+              <div style="width:6px;height:6px;border-radius:50%;background:var(--gb)"></div>
+              Mérida, Yucatán
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="screen-label">Mapa en vivo</div>
+      <div class="screen-sub">Zonas · Pines · FAB</div>
+    </div>
+
+    <!-- Screen 3: Apagoncito Chat -->
+    <div class="screen-item">
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="phone-status"><span>4:02</span><span>▪▪▪ ⚡ 52</span></div>
+          <div class="ps-header">
+            <div class="ps-header-icon"><svg width="14" height="14" viewBox="0 0 52 52" fill="none"><path d="M30 6L14 28H26L22 46L38 24H26L30 6Z" fill="white"/></svg></div>
+            <div class="ps-brand"><span class="p1">Apagones</span><span class="p2"> Mid</span></div>
+            <div class="ps-counter apag">⚡ 0</div>
+            <div class="ps-counter agua">💧 5</div>
+            <div class="ps-menu" style="margin-left:auto"><span></span><span></span><span></span></div>
+          </div>
+          <!-- Notification banner -->
+          <div style="background:rgba(11,168,196,.12);border:1px solid rgba(11,168,196,.3);border-radius:10px;margin:8px 12px 0;padding:10px 12px;display:flex;align-items:flex-start;gap:8px">
+            <span style="font-size:14px">💧</span>
+            <div><div style="font-size:11px;font-weight:700;color:var(--tb)">Hay fuga de agua en tu zona</div><div style="font-size:10px;color:var(--gr4)">1 reporte activo · Toca para ver</div></div>
+            <span style="font-size:14px;color:var(--gr4);margin-left:auto">×</span>
+          </div>
+          <!-- Chat panel -->
+          <div style="background:linear-gradient(160deg,var(--d4),#1A1020);border:1px solid rgba(101,8,31,.3);border-radius:14px;margin:8px 10px 0;padding:14px 0 0;position:relative;overflow:hidden">
+            <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(245,166,35,.35),transparent)"></div>
+            <!-- Avatar + name -->
+            <div style="text-align:center;padding:0 12px 12px;border-bottom:1px solid rgba(101,8,31,.2)">
+              <div style="width:64px;height:64px;margin:0 auto 10px;position:relative">
+                <div style="position:absolute;inset:-4px;border-radius:50%;border:1px solid rgba(245,166,35,.15);animation:ring 3s ease-in-out infinite"></div>
+                <svg width="64" height="64" viewBox="0 0 220 280" fill="none">
+                  <path d="M64 158 Q60 112 77 84 Q91 58 110 54 Q129 58 143 84 Q160 112 156 158 L72 180 Q69 173 64 158Z" fill="url(#bul)"/>
+                  <ellipse cx="90" cy="97" rx="13" ry="20" fill="rgba(255,255,255,.28)" transform="rotate(-18,90,97)"/>
+                  <ellipse cx="90" cy="133" rx="20" ry="22" fill="white" stroke="#2C1A00" stroke-width="2.5"/>
+                  <circle cx="92" cy="135" r="12" fill="#6B3A00"/><circle cx="93" cy="136" r="7.5" fill="#0A0A0A"/><circle cx="98" cy="128" r="4" fill="white"/>
+                  <ellipse cx="130" cy="133" rx="20" ry="22" fill="white" stroke="#2C1A00" stroke-width="2.5"/>
+                  <circle cx="132" cy="135" r="12" fill="#6B3A00"/><circle cx="133" cy="136" r="7.5" fill="#0A0A0A"/><circle cx="138" cy="128" r="4" fill="white"/>
+                  <path d="M87 161 Q110 178 133 161" fill="#2C1A00" stroke="#2C1A00" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M90 163 Q110 177 130 163 Q120 170 110 170 Q100 170 90 163Z" fill="white"/>
+                  <rect x="83" y="178" width="54" height="10" rx="5" fill="#DAA520" stroke="#2C1A00" stroke-width="2.5"/>
+                  <rect x="77" y="188" width="66" height="13" rx="4" fill="#C49A2A" stroke="#2C1A00" stroke-width="2.5"/>
+                  <circle cx="110" cy="215" r="8" fill="url(#bG)" stroke="#2C1A00" stroke-width="2.5"/>
+                  <path d="M117 6L104 30H114L101 56L126 28H116Z" fill="url(#lG)" stroke="#2C1A00" stroke-width="3"/>
+                </svg>
+              </div>
+              <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;background:linear-gradient(135deg,var(--ambb),var(--amb));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Apagoncito</div>
+              <div style="font-size:10px;color:var(--gr4);display:flex;align-items:center;justify-content:center;gap:5px;margin-top:2px"><div style="width:5px;height:5px;border-radius:50%;background:#22C55E;box-shadow:0 0 4px #22C55E"></div>Asistente · Mérida</div>
+              <div style="display:flex;gap:6px;justify-content:center;margin-top:8px">
+                <div class="ps-counter apag" style="font-size:10px">⚡ 0</div>
+                <div class="ps-counter agua" style="font-size:10px">💧 5</div>
+              </div>
+            </div>
+            <!-- Message -->
+            <div class="chat-bubble"><strong style="color:var(--ambb);font-family:'Nunito',sans-serif;font-weight:800">Apagoncito</strong> aquí.<br><br>Hay 0 apagones y 5 reportes de agua en Mérida.<br><br>¿En qué te puedo ayudar?</div>
+            <!-- Chips -->
+            <div class="chat-chips-row">
+              <div class="chat-chip" style="color:var(--gb)">⚡ Apagones</div>
+              <div class="chat-chip" style="color:var(--tb)">💧 Agua</div>
+              <div class="chat-chip">Mi zona</div>
+              <div class="chat-chip">Top zonas</div>
+            </div>
+            <!-- Input -->
+            <div class="chat-input-row">
+              <div class="chat-input-field">Pregúntale a Apagoncito...</div>
+              <div class="chat-send"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            </div>
+          </div>
+          <!-- Success toast -->
+          <div class="ps-toast">✓ ¡Gracias por confirmar la reparación de la fuga!</div>
+        </div>
+      </div>
+      <div class="screen-label">Apagoncito</div>
+      <div class="screen-sub">Asistente · Chat</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════ 06 FLUJO DE REPORTE ══════ -->
+<section id="flujo">
+<div class="wrap">
+  <div class="rv">
+    <div class="sl">06 — Flujo de Reporte</div>
+    <h2 class="st">Paso a Paso</h2>
+    <div class="sr"></div>
+    <p class="ss">4 pasos para reportar un incidente. El stepper de progreso usa guinda para los pasos activos y completados.</p>
+  </div>
+
+  <div class="screens-row rv">
+    <!-- Step 1: Select type -->
+    <div class="screen-item">
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="phone-status"><span>4:02</span><span>▪▪▪ ⚡ 52</span></div>
+          <div style="height:140px;background:linear-gradient(180deg,rgba(0,0,0,.8) 0%,transparent 100%);position:relative">
+            <div style="position:absolute;inset:0;background:var(--d3);opacity:.5"></div>
+          </div>
+          <!-- Bottom sheet -->
+          <div class="ps-modal">
+            <div class="ps-modal-pill"></div>
+            <div class="ps-progress">
+              <div class="ps-progress-bar active"></div>
+              <div class="ps-progress-bar pending"></div>
+              <div class="ps-progress-bar pending"></div>
+            </div>
+            <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;margin-bottom:3px">¿Qué está pasando?</div>
+            <div style="font-size:11px;color:var(--gr4);margin-bottom:14px">Selecciona el tipo de incidencia</div>
+            <!-- Main type -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
+              <div class="ps-card apag-sel">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+                  <div style="width:32px;height:32px;border-radius:8px;background:var(--g);display:flex;align-items:center;justify-content:center">
+                    <svg width="18" height="18" viewBox="0 0 52 52" fill="none"><path d="M30 6L14 28H26L22 46L38 24H26L30 6Z" fill="url(#lG)"/></svg>
+                  </div>
+                  <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:13px;color:var(--amb)">APAGÓN</div>
+                  <div style="font-size:10px;color:var(--gr4)">Sin electricidad</div>
+                </div>
+              </div>
+              <div class="ps-card" style="text-align:center">
+                <div style="width:32px;height:32px;border-radius:8px;background:var(--d3);display:flex;align-items:center;justify-content:center;margin:0 auto 4px">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C12 2 5 9.5 5 14.5C5 18.09 8.13 21 12 21C15.87 21 19 18.09 19 14.5C19 9.5 12 2 12 2Z" fill="var(--t)"/></svg>
+                </div>
+                <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:13px;color:var(--tb)">AGUA</div>
+                <div style="font-size:10px;color:var(--gr4)">Fuga, corte o calidad</div>
+              </div>
+            </div>
+            <!-- Sub-types -->
+            <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--amb);display:flex;align-items:center;gap:6px;margin-bottom:8px">⚡ ¿DÓNDE NO HAY LUZ?</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+              <div class="ps-card" style="text-align:center;padding:12px 8px">
+                <div style="font-size:20px;margin-bottom:4px">🏠</div>
+                <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;color:var(--amb)">EN CASA</div>
+                <div style="font-size:9px;color:var(--gr4)">Apagón en mi domicilio</div>
+              </div>
+              <div class="ps-card apag-sel" style="text-align:center;padding:12px 8px">
+                <div style="font-size:20px;margin-bottom:4px">🔦</div>
+                <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;color:var(--amb)">Alumbrado</div>
+                <div style="font-size:9px;color:var(--gr4)">Foco de calle fundido</div>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 2fr;gap:8px;margin-top:12px">
+              <button style="background:transparent;border:1px solid var(--gr2);border-radius:10px;padding:11px;color:var(--gr5);font-family:'Barlow',sans-serif;font-weight:600;font-size:12px">Cancelar</button>
+              <button style="background:var(--g);border:none;border-radius:10px;padding:11px;color:white;font-family:'Barlow',sans-serif;font-weight:700;font-size:12px">Continuar →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="screen-label">Paso 1</div>
+      <div class="screen-sub">Tipo de incidencia</div>
+    </div>
+
+    <!-- Step 2: Location -->
+    <div class="screen-item">
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="phone-status"><span>4:02</span><span>▪▪▪ ⚡ 52</span></div>
+          <div style="height:220px;background:var(--d3);position:relative;overflow:hidden">
+            <div style="position:absolute;inset:0" class="ps-map-grid" style="opacity:.5"></div>
+            <svg style="position:absolute;inset:0" width="280" height="220" fill="none">
+              <line x1="140" y1="0" x2="140" y2="220" stroke="#1A1A1A" stroke-width="1.5"/>
+              <line x1="0" y1="110" x2="280" y2="110" stroke="#1A1A1A" stroke-width="1.5"/>
+              <line x1="70" y1="0" x2="70" y2="220" stroke="#111" stroke-width="1"/>
+              <line x1="210" y1="0" x2="210" y2="220" stroke="#111" stroke-width="1"/>
+            </svg>
+            <!-- teal glow pin -->
+            <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-100%)">
+              <svg width="32" height="40" viewBox="0 0 44 56" fill="none"><path d="M22 2C11 2 2 11 2 22C2 35 22 54 22 54C22 54 42 35 42 22C42 11 33 2 22 2Z" fill="var(--tb)" stroke="rgba(18,203,240,.4)" stroke-width="1.5"/><circle cx="22" cy="22" r="8" fill="white" opacity=".9"/></svg>
+            </div>
+          </div>
+          <div class="ps-modal" style="position:relative">
+            <div class="ps-modal-pill"></div>
+            <div class="ps-progress">
+              <div class="ps-progress-bar done"></div>
+              <div class="ps-progress-bar active"></div>
+              <div class="ps-progress-bar pending"></div>
+            </div>
+            <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;margin-bottom:3px">¿Dónde ocurre?</div>
+            <div style="font-size:11px;color:var(--gr4);margin-bottom:14px">Ubica el problema en el mapa</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
+              <div class="ps-card" style="display:flex;align-items:center;gap:8px;padding:12px">
+                <span style="font-size:18px">📍</span>
+                <div><div style="font-weight:700;font-size:12px">Mi ubicación</div><div style="font-size:10px;color:var(--gr4)">GPS automático</div></div>
+              </div>
+              <div class="ps-card" style="display:flex;align-items:center;gap:8px;padding:12px">
+                <span style="font-size:18px">🗺️</span>
+                <div><div style="font-weight:700;font-size:12px">Marcar mapa</div><div style="font-size:10px;color:var(--gr4)">Toca ubicación</div></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;background:var(--d3);border:1px solid var(--gr1);border-radius:8px;padding:11px;font-size:11px;color:var(--gr4);margin-bottom:12px">
+              <span>📌</span> Elige cómo ubicar tu reporte
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 2fr;gap:8px">
+              <button style="background:transparent;border:1px solid var(--gr2);border-radius:10px;padding:11px;color:var(--gr5);font-family:'Barlow',sans-serif;font-weight:600;font-size:12px">← Atrás</button>
+              <button style="background:var(--g);border:none;border-radius:10px;padding:11px;color:white;font-family:'Barlow',sans-serif;font-weight:700;font-size:12px">Continuar →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="screen-label">Paso 2</div>
+      <div class="screen-sub">Ubicación</div>
+    </div>
+
+    <!-- Step 3: Contact data -->
+    <div class="screen-item">
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen" style="overflow-y:auto">
+          <div class="phone-status"><span>4:02</span><span>▪▪▪ ⚡ 52</span></div>
+          <div class="ps-modal" style="position:relative;padding-top:14px">
+            <div class="ps-modal-pill"></div>
+            <div class="ps-progress">
+              <div class="ps-progress-bar done"></div>
+              <div class="ps-progress-bar done"></div>
+              <div class="ps-progress-bar active"></div>
+            </div>
+            <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:16px;margin-bottom:2px">Tus datos de contacto</div>
+            <div style="font-size:10px;color:var(--gr4);margin-bottom:14px">Privados — verificación anti-bots</div>
+            <!-- Severity -->
+            <div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gr4);margin-bottom:8px">SEVERIDAD</div>
+            <div style="display:flex;gap:6px;margin-bottom:14px">
+              <div class="sev-btn"><div style="width:8px;height:8px;border-radius:50%;background:#22C55E"></div>Leve</div>
+              <div class="sev-btn active">🟡 Moderado</div>
+              <div class="sev-btn"><div style="width:8px;height:8px;border-radius:50%;background:#EF4444"></div>Crítico</div>
+            </div>
+            <!-- Photo -->
+            <div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gr4);margin-bottom:6px">📸 FOTO DEL CORTE (OPCIONAL)</div>
+            <div style="background:var(--d3);border:1px dashed var(--gr2);border-radius:8px;padding:16px;text-align:center;margin-bottom:12px">
+              <div style="font-size:20px;margin-bottom:4px">📷</div>
+              <div style="font-size:11px;color:var(--gr4)">Tomar foto o subir imagen</div>
+            </div>
+            <!-- Fields -->
+            <div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gr4);margin-bottom:5px">TU NOMBRE</div>
+            <div class="ps-field" style="margin-bottom:10px">Ej. María González</div>
+            <div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gr4);margin-bottom:5px">TELÉFONO (WHATSAPP)</div>
+            <div class="ps-field">+52 999 123 4567</div>
+            <!-- Privacy note -->
+            <div style="background:rgba(11,168,196,.08);border:1px solid rgba(11,168,196,.2);border-radius:8px;padding:10px 12px;margin:10px 0;display:flex;gap:8px;align-items:flex-start">
+              <span style="font-size:12px">🔒</span>
+              <div style="font-size:10px;color:var(--gr5);line-height:1.5">Tu nombre y teléfono son <strong>privados</strong>. Solo los ve el administrador. Nunca aparecen en el mapa.</div>
+            </div>
+            <button style="background:var(--t);border:none;border-radius:10px;padding:12px;width:100%;color:white;font-family:'Barlow',sans-serif;font-weight:700;font-size:13px">Reportar Sin Agua 📍</button>
+          </div>
+        </div>
+      </div>
+      <div class="screen-label">Paso 3</div>
+      <div class="screen-sub">Datos · Foto · Severidad</div>
+    </div>
+
+    <!-- Confirmation / Reminder -->
+    <div class="screen-item">
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="phone-status"><span>4:03</span><span>▪▪▪ ⚡ 52</span></div>
+          <div style="height:200px;background:var(--bk);position:relative">
+            <div style="position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);width:200px;height:200px;background:radial-gradient(circle,rgba(101,8,31,.3) 0%,transparent 70%);border-radius:50%"></div>
+          </div>
+          <!-- Notification panel -->
+          <div class="ps-modal" style="position:relative">
+            <div class="ps-modal-pill"></div>
+            <div style="text-align:center">
+              <!-- Bell icon -->
+              <div style="width:60px;height:60px;background:var(--g);border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" fill="white"/><path d="M13.73 21a2 2 0 0 1-3.46 0" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;margin-bottom:8px">Alertas de apagones</div>
+              <div style="font-size:12px;color:var(--gr5);margin-bottom:16px;line-height:1.5">Recibe una notificación cuando hay un apagón o fuga de agua en tu zona</div>
+              <div style="font-size:28px;margin-bottom:8px">🎉</div>
+              <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;color:#22C55E;margin-bottom:4px">¡Notificaciones activadas!</div>
+              <div style="font-size:11px;color:var(--gr4);margin-bottom:16px">Te avisaremos cuando haya incidencias cerca de ti</div>
+              <button style="background:var(--g);border:none;border-radius:12px;padding:14px;width:100%;color:white;font-family:'Barlow',sans-serif;font-weight:700;font-size:14px">Perfecto ✓</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="screen-label">Confirmación</div>
+      <div class="screen-sub">Notificaciones</div>
+    </div>
+  </div>
+
+  <!-- Reminder modal detail -->
+  <div class="rv d1" style="margin-top:48px">
+    <div style="display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap">
+      <div class="phone-frame" style="width:220px">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="phone-status"><span>4:02</span><span>▪▪▪ ⚡ 52</span></div>
+          <div style="height:100px;position:relative;background:var(--d3)">
+            <div style="position:absolute;inset:0;background:radial-gradient(circle at 70% 40%,rgba(101,8,31,.3),transparent 60%)"></div>
+          </div>
+          <div class="ps-modal" style="position:relative">
+            <div class="ps-modal-pill"></div>
+            <div style="text-align:center">
+              <div style="width:52px;height:52px;background:rgba(11,168,196,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;border:2px solid rgba(11,168,196,.3)">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2C12 2 5 9.5 5 14.5C5 18.09 8.13 21 12 21C15.87 21 19 18.09 19 14.5C19 9.5 12 2 12 2Z" fill="var(--tb)"/></svg>
+              </div>
+              <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gb);margin-bottom:6px">RECORDATORIO</div>
+              <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:16px;margin-bottom:8px">¿Ya se resolvió la fuga?</div>
+              <div style="font-size:11px;color:var(--gr5);margin-bottom:14px">Tu reporte de hace <strong>28h 10m</strong><br>en <strong>Calle 20</strong></div>
+              <button style="background:#22C55E;border:none;border-radius:10px;padding:12px;width:100%;color:white;font-family:'Barlow',sans-serif;font-weight:700;font-size:13px;margin-bottom:8px">✅ Sí, ya se resolvió</button>
+              <button style="background:var(--d3);border:1px solid var(--gr1);border-radius:10px;padding:10px;width:100%;color:var(--gr5);font-family:'Barlow',sans-serif;font-weight:600;font-size:12px;margin-bottom:10px">⏳ Aún no — recuérdame después</button>
+              <div style="font-size:10px;color:var(--gr3)">No mostrar este recordatorio</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="flex:1;min-width:280px;padding-top:20px">
+        <div class="tc-lbl" style="margin-bottom:16px">Modal de Recordatorio</div>
+        <p style="font-size:13px;color:var(--gr5);line-height:1.7;margin-bottom:16px">Después de X horas del reporte, la app pregunta si el problema ya se resolvió. Esto mantiene el mapa actualizado de forma colaborativa.</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;gap:10px;align-items:flex-start"><div style="width:5px;height:5px;border-radius:50%;background:var(--gb);flex-shrink:0;margin-top:5px"></div><div style="font-size:12px;color:var(--gr5)">Borde guinda en el modal — conexión con la identidad de la plataforma</div></div>
+          <div style="display:flex;gap:10px;align-items:flex-start"><div style="width:5px;height:5px;border-radius:50%;background:#22C55E;flex-shrink:0;margin-top:5px"></div><div style="font-size:12px;color:var(--gr5)">Botón verde para acción positiva — no guinda, para no confundir con CTA principal</div></div>
+          <div style="display:flex;gap:10px;align-items:flex-start"><div style="width:5px;height:5px;border-radius:50%;background:var(--gr3);flex-shrink:0;margin-top:5px"></div><div style="font-size:12px;color:var(--gr5)">Opción terciaria en texto plano — jerarquía visual clara en 3 niveles</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════ 07 MENÚ / SETTINGS ══════ -->
+<section id="menu">
+<div class="wrap">
+  <div class="rv">
+    <div class="sl">07 — Menú y Configuración</div>
+    <h2 class="st">Funciones de la App</h2>
+    <div class="sr"></div>
+    <p class="ss">El menú principal expone todas las funciones de la plataforma. Cada opción tiene un ícono de color propio en contenedor oscuro redondeado.</p>
+  </div>
+
+  <div style="display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap" class="rv d1">
+    <div class="phone-frame" style="width:260px">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="phone-status"><span>4:04</span><span>▪▪▪ ⚡ 52</span></div>
+        <div style="padding:8px 0">
+          <!-- Menu items -->
+          <div class="ps-list-item"><div class="ps-list-icon" style="background:#1A2A1A"><span style="font-size:16px">🔔</span></div><div><div style="font-weight:600;font-size:13px">Notificaciones</div><div style="font-size:11px;color:var(--gr4)">Activas ✓</div></div><span style="color:var(--gr4);margin-left:auto">›</span></div>
+          <div class="ps-list-item"><div class="ps-list-icon" style="background:#1A1A2A"><span style="font-size:16px">🕐</span></div><div><div style="font-weight:600;font-size:13px">Historial de zonas</div><div style="font-size:11px;color:var(--gr4)">Últimos 30 días</div></div><span style="color:var(--gr4);margin-left:auto">›</span></div>
+          <div class="ps-list-item"><div class="ps-list-icon" style="background:#2A1A10"><span style="font-size:16px">📞</span></div><div><div style="font-weight:600;font-size:13px">Reportar a CFE/JAPAY</div><div style="font-size:11px;color:var(--gr4)">Contacto oficial</div></div><span style="color:var(--gr4);margin-left:auto">›</span></div>
+          <div class="ps-list-item"><div class="ps-list-icon" style="background:rgba(101,8,31,.3)"><span style="font-size:16px">🚨</span></div><div><div style="font-weight:600;font-size:13px">Emergencias</div><div style="font-size:11px;color:var(--gr4)">CFE · JAPAY · Cruz Roja · 911</div></div><span style="color:var(--gr4);margin-left:auto">›</span></div>
+          <div class="ps-list-item"><div class="ps-list-icon" style="background:#1A2010"><span style="font-size:16px">📊</span></div><div><div style="font-weight:600;font-size:13px">Ranking de zonas</div><div style="font-size:11px;color:var(--gr4)">Las más activas este mes</div></div><span style="color:var(--gr4);margin-left:auto">›</span></div>
+          <div class="ps-list-item"><div class="ps-list-icon" style="background:#1A1520"><span style="font-size:16px">🌙</span></div><div><div style="font-weight:600;font-size:13px">Modo claro</div><div style="font-size:11px;color:var(--gr4)">Cambia la apariencia</div></div><span style="color:var(--gr4);margin-left:auto">›</span></div>
+          <div class="ps-list-item"><div class="ps-list-icon" style="background:#0A1A20"><span style="font-size:16px">🌐</span></div><div><div style="font-weight:600;font-size:13px">Idioma / Language</div><div style="font-size:11px;color:var(--gr4)">Español · English · Maya</div></div><span style="color:var(--gr4);margin-left:auto">›</span></div>
+          <div class="ps-list-item"><div class="ps-list-icon" style="background:#201A10"><span style="font-size:16px">📋</span></div><div><div style="font-weight:600;font-size:13px">Widget de inicio</div><div style="font-size:11px;color:var(--gr4)">Estado en pantalla inicio</div></div><span style="color:var(--gr4);margin-left:auto">›</span></div>
+          <div class="ps-list-item"><div class="ps-list-icon" style="background:#0A1A15"><span style="font-size:16px">📰</span></div><div><div style="font-weight:600;font-size:13px">Boletín semanal</div><div style="font-size:11px;color:var(--gr4)">Resumen para medios</div></div><span style="color:var(--gr4);margin-left:auto">›</span></div>
+          <div class="ps-list-item" style="border-bottom:none"><div class="ps-list-icon" style="background:#1A1520"><span style="font-size:16px">📄</span></div><div><div style="font-weight:600;font-size:13px">Carta de queja PDF</div><div style="font-size:11px;color:var(--gr4)">CFE o JAPAY — formal</div></div><span style="color:var(--gr4);margin-left:auto">›</span></div>
+        </div>
+      </div>
+    </div>
+    <!-- Feature highlights -->
+    <div style="flex:1;min-width:300px">
+      <div class="tc-lbl" style="margin-bottom:20px">Funciones destacadas</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div style="background:var(--d2);border:1px solid var(--gr1);border-radius:10px;padding:18px;border-left:2px solid var(--gb)">
+          <div style="font-size:18px;margin-bottom:8px">🌐</div>
+          <div style="font-weight:700;font-size:13px;margin-bottom:4px">Idioma Maya</div>
+          <div style="font-size:11px;color:var(--gr4);line-height:1.5">Español · English · Maya. Una app que habla como Mérida.</div>
+        </div>
+        <div style="background:var(--d2);border:1px solid var(--gr1);border-radius:10px;padding:18px;border-left:2px solid var(--t)">
+          <div style="font-size:18px;margin-bottom:8px">📄</div>
+          <div style="font-weight:700;font-size:13px;margin-bottom:4px">Carta de queja PDF</div>
+          <div style="font-size:11px;color:var(--gr4);line-height:1.5">Genera un PDF formal para enviar a CFE o JAPAY.</div>
+        </div>
+        <div style="background:var(--d2);border:1px solid var(--gr1);border-radius:10px;padding:18px;border-left:2px solid #B87000">
+          <div style="font-size:18px;margin-bottom:8px">📊</div>
+          <div style="font-weight:700;font-size:13px;margin-bottom:4px">Dashboard público</div>
+          <div style="font-size:11px;color:var(--gr4);line-height:1.5">Para medios y prensa. Datos abiertos de la ciudad.</div>
+        </div>
+        <div style="background:var(--d2);border:1px solid var(--gr1);border-radius:10px;padding:18px;border-left:2px solid #22C55E">
+          <div style="font-size:18px;margin-bottom:8px">📋</div>
+          <div style="font-weight:700;font-size:13px;margin-bottom:4px">Widget de inicio</div>
+          <div style="font-size:11px;color:var(--gr4);line-height:1.5">Estado de incidentes directamente en la pantalla de inicio.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════ 08 APAGONCITO ══════ -->
+<section id="mascota">
+<div class="wrap">
+  <div class="rv">
+    <div class="sl">08 — Mascota</div>
+    <h2 class="st">Apagoncito</h2>
+    <div class="sr"></div>
+    <p class="ss">La bombilla meridana con más carácter. Ámbar por dentro, guinda en el corazón. Amigable para niños, reconocible para adultos.</p>
+  </div>
+
+  <div class="g2 rv d1">
+    <div class="cell" style="display:flex;justify-content:center;align-items:center;background:radial-gradient(ellipse 55% 55% at 50% 50%,rgba(101,8,31,.2),transparent 70%),var(--d2)">
+      <div class="mascot-glow-s">
+        <svg width="210" height="265" viewBox="0 0 220 280" fill="none">
+          <ellipse cx="110" cy="272" rx="55" ry="9" fill="rgba(0,0,0,.4)"/>
+          <ellipse cx="110" cy="140" rx="88" ry="82" fill="url(#aura)" opacity=".42"/>
+          <path d="M68 162 Q46 154 30 142 Q22 137 25 128 Q28 119 36 123 Q52 132 66 148" fill="#F5A623" stroke="#2C1A00" stroke-width="3.5"/>
+          <circle cx="28" cy="128" r="11" fill="#F5A623" stroke="#2C1A00" stroke-width="3.5"/>
+          <line x1="18" y1="122" x2="14" y2="112" stroke="#F5A623" stroke-width="9" stroke-linecap="round"/><line x1="18" y1="122" x2="14" y2="112" stroke="#2C1A00" stroke-width="3" stroke-linecap="round"/>
+          <line x1="24" y1="118" x2="22" y2="107" stroke="#F5A623" stroke-width="9" stroke-linecap="round"/><line x1="24" y1="118" x2="22" y2="107" stroke="#2C1A00" stroke-width="3" stroke-linecap="round"/>
+          <line x1="30" y1="117" x2="31" y2="106" stroke="#F5A623" stroke-width="9" stroke-linecap="round"/><line x1="30" y1="117" x2="31" y2="106" stroke="#2C1A00" stroke-width="3" stroke-linecap="round"/>
+          <path d="M152 162 Q174 154 190 142 Q198 137 195 128 Q192 119 184 123 Q168 132 154 148" fill="#F5A623" stroke="#2C1A00" stroke-width="3.5"/>
+          <circle cx="192" cy="128" r="11" fill="#F5A623" stroke="#2C1A00" stroke-width="3.5"/>
+          <line x1="202" y1="122" x2="206" y2="112" stroke="#F5A623" stroke-width="9" stroke-linecap="round"/><line x1="202" y1="122" x2="206" y2="112" stroke="#2C1A00" stroke-width="3" stroke-linecap="round"/>
+          <line x1="196" y1="118" x2="198" y2="107" stroke="#F5A623" stroke-width="9" stroke-linecap="round"/><line x1="196" y1="118" x2="198" y2="107" stroke="#2C1A00" stroke-width="3" stroke-linecap="round"/>
+          <line x1="190" y1="117" x2="189" y2="106" stroke="#F5A623" stroke-width="9" stroke-linecap="round"/><line x1="190" y1="117" x2="189" y2="106" stroke="#2C1A00" stroke-width="3" stroke-linecap="round"/>
+          <ellipse cx="110" cy="132" rx="54" ry="54" fill="url(#iglow)" opacity=".55"/>
+          <path d="M64 158 Q60 112 77 84 Q91 58 110 54 Q129 58 143 84 Q160 112 156 158 Q151 173 148 180 L72 180 Q69 173 64 158Z" fill="url(#bul)" stroke="#2C1A00" stroke-width="4"/>
+          <ellipse cx="90" cy="97" rx="16" ry="24" fill="rgba(255,255,255,.32)" transform="rotate(-18,90,97)"/>
+          <ellipse cx="83" cy="89" rx="7" ry="10" fill="rgba(255,255,255,.48)" transform="rotate(-18,83,89)"/>
+          <path d="M74 108 Q89 98 106 104" stroke="#2C1A00" stroke-width="6" stroke-linecap="round"/>
+          <path d="M114 104 Q131 98 146 108" stroke="#2C1A00" stroke-width="6" stroke-linecap="round"/>
+          <ellipse cx="90" cy="133" rx="21" ry="23" fill="white" stroke="#2C1A00" stroke-width="3.5" class="eye-b" style="transform-origin:90px 133px"/>
+          <circle cx="92" cy="135" r="14" fill="#6B3A00"/><circle cx="93" cy="136" r="9" fill="#0A0A0A"/><circle cx="99" cy="128" r="5" fill="white"/><circle cx="86" cy="139" r="2.5" fill="white" opacity=".65"/>
+          <ellipse cx="130" cy="133" rx="21" ry="23" fill="white" stroke="#2C1A00" stroke-width="3.5" class="eye-b" style="transform-origin:130px 133px;animation-delay:.08s"/>
+          <circle cx="132" cy="135" r="14" fill="#6B3A00"/><circle cx="133" cy="136" r="9" fill="#0A0A0A"/><circle cx="139" cy="128" r="5" fill="white"/><circle cx="126" cy="139" r="2.5" fill="white" opacity=".65"/>
+          <ellipse cx="68" cy="152" rx="15" ry="10" fill="rgba(240,80,50,.28)"/>
+          <ellipse cx="152" cy="152" rx="15" ry="10" fill="rgba(240,80,50,.28)"/>
+          <path d="M84 161 Q110 182 136 161" fill="#2C1A00" stroke="#2C1A00" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M87 163 Q110 180 133 163 Q120 174 110 174 Q100 174 87 163Z" fill="white"/>
+          <line x1="110" y1="163" x2="110" y2="173" stroke="#2C1A00" stroke-width="2"/>
+          <line x1="97" y1="164" x2="97" y2="172" stroke="#2C1A00" stroke-width="1.5"/>
+          <line x1="123" y1="164" x2="123" y2="172" stroke="#2C1A00" stroke-width="1.5"/>
+          <rect x="83" y="178" width="54" height="10" rx="5" fill="#DAA520" stroke="#2C1A00" stroke-width="3"/>
+          <rect x="77" y="188" width="66" height="13" rx="4" fill="#C49A2A" stroke="#2C1A00" stroke-width="3"/>
+          <line x1="83" y1="193" x2="137" y2="193" stroke="rgba(0,0,0,.22)" stroke-width="1.5"/>
+          <rect x="80" y="201" width="60" height="12" rx="4" fill="#A07D22" stroke="#2C1A00" stroke-width="3"/>
+          <circle cx="110" cy="218" r="9" fill="url(#bG)" stroke="#2C1A00" stroke-width="3"/>
+          <path d="M120 6 L104 34 H116 L100 62 L128 30 H116 Z" fill="url(#lG)" stroke="#2C1A00" stroke-width="3.5" stroke-linejoin="round"/>
+          <path d="M116 12 L108 28 H116" stroke="rgba(255,255,255,.55)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M44 52 L47 43 L50 52 L59 49 L50 58 L47 67 L44 58 L35 55 Z" fill="#FFD700" stroke="#2C1A00" stroke-width="2.5"/>
+          <path d="M166 46 L169 39 L172 46 L179 43 L172 51 L169 59 L166 51 L159 48 Z" fill="#FFD700" stroke="#2C1A00" stroke-width="2.5"/>
+          <circle cx="32" cy="88" r="6" fill="var(--gb)" stroke="#2C1A00" stroke-width="2.5"/>
+          <circle cx="188" cy="82" r="5" fill="var(--gb)" stroke="#2C1A00" stroke-width="2.5"/>
+        </svg>
+      </div>
+    </div>
+    <!-- Palette -->
+    <div class="cell">
+      <div class="tc-lbl" style="margin-bottom:22px">Paleta del personaje</div>
+      <div style="display:flex;flex-direction:column;gap:13px">
+        <div style="display:flex;gap:12px;align-items:center"><div style="width:44px;height:44px;background:linear-gradient(135deg,#FFE088,#F5A623);border-radius:8px;flex-shrink:0"></div><div><div style="font-weight:700;font-size:14px">Ámbar Principal</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gr4)">#FFE088 → #F5A623</div><div style="font-size:11px;color:var(--gr4)">Bulbo, cara, brazos</div></div></div>
+        <div style="display:flex;gap:12px;align-items:center"><div style="width:44px;height:44px;background:linear-gradient(135deg,#FFF176,#FFD700,#E8970A);border-radius:8px;flex-shrink:0"></div><div><div style="font-weight:700;font-size:14px">Lightning Dorado</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gr4)">#FFF176 → #FFD700</div><div style="font-size:11px;color:var(--gr4)">Rayo corona, estrellas, destellos</div></div></div>
+        <div style="display:flex;gap:12px;align-items:center"><div style="width:44px;height:44px;background:linear-gradient(135deg,var(--gb),var(--gd));border-radius:8px;flex-shrink:0"></div><div><div style="font-weight:700;font-size:14px">Guinda Contacto</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gr4)">#9B1035 → #5C0120</div><div style="font-size:11px;color:var(--gr4)">Solo el punto de contacto</div></div></div>
+        <div style="display:flex;gap:12px;align-items:center"><div style="width:44px;height:44px;background:linear-gradient(135deg,#DAA520,#A07D22);border-radius:8px;flex-shrink:0"></div><div><div style="font-weight:700;font-size:14px">Dorado Edison</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gr4)">#DAA520 → #A07D22</div><div style="font-size:11px;color:var(--gr4)">Base roscada 3 segmentos</div></div></div>
+        <div style="display:flex;gap:12px;align-items:center"><div style="width:44px;height:44px;background:#2C1A00;border-radius:8px;flex-shrink:0;border:1px solid var(--gr1)"></div><div><div style="font-weight:700;font-size:14px">Café Oscuro</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gr4)">#2C1A00</div><div style="font-size:11px;color:var(--gr4)">Contornos, iris, cejas, boca</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Expressions -->
+  <div class="rv d1" style="margin-top:2px">
+    <div class="exp-grid">
+
+      <!-- ── NORMAL ── -->
+      <div class="exp-cell">
+        <!-- viewBox crops to character content: x 38→182, y -10→238 -->
+        <svg width="116" height="192" viewBox="38 -10 144 248" fill="none" overflow="visible">
+          <!-- bulbo -->
+          <path d="M64 158 Q60 112 77 84 Q91 58 110 54 Q129 58 143 84 Q160 112 156 158 L72 180 Q69 173 64 158Z"
+                fill="url(#bul)" stroke="#2C1A00" stroke-width="3.5"/>
+          <!-- brillo vidrio -->
+          <ellipse cx="90" cy="97" rx="13" ry="20" fill="rgba(255,255,255,.3)" transform="rotate(-18,90,97)"/>
+          <ellipse cx="84" cy="90" rx="5.5" ry="8.5" fill="rgba(255,255,255,.45)" transform="rotate(-18,84,90)"/>
+          <!-- cejas -->
+          <path d="M74 108 Q89 99 106 104" stroke="#2C1A00" stroke-width="5.5" stroke-linecap="round"/>
+          <path d="M114 104 Q131 99 146 108" stroke="#2C1A00" stroke-width="5.5" stroke-linecap="round"/>
+          <!-- ojo izq -->
+          <ellipse cx="90" cy="133" rx="20" ry="22" fill="white" stroke="#2C1A00" stroke-width="3"/>
+          <circle cx="92" cy="135" r="13" fill="#6B3A00"/>
+          <circle cx="93" cy="136" r="8" fill="#0A0A0A"/>
+          <circle cx="99" cy="128" r="4.5" fill="white"/>
+          <circle cx="87" cy="140" r="2" fill="white" opacity=".6"/>
+          <!-- ojo der -->
+          <ellipse cx="130" cy="133" rx="20" ry="22" fill="white" stroke="#2C1A00" stroke-width="3"/>
+          <circle cx="132" cy="135" r="13" fill="#6B3A00"/>
+          <circle cx="133" cy="136" r="8" fill="#0A0A0A"/>
+          <circle cx="139" cy="128" r="4.5" fill="white"/>
+          <circle cx="127" cy="140" r="2" fill="white" opacity=".6"/>
+          <!-- mejillas -->
+          <ellipse cx="68" cy="152" rx="13" ry="9" fill="rgba(240,80,50,.28)"/>
+          <ellipse cx="152" cy="152" rx="13" ry="9" fill="rgba(240,80,50,.28)"/>
+          <!-- boca + dientes -->
+          <path d="M87 161 Q110 180 133 161" fill="#2C1A00" stroke="#2C1A00" stroke-width="3" stroke-linecap="round"/>
+          <path d="M90 163 Q110 178 130 163 Q120 171 110 171 Q100 171 90 163Z" fill="white"/>
+          <line x1="110" y1="163" x2="110" y2="171" stroke="#2C1A00" stroke-width="1.5"/>
+          <line x1="98"  y1="164" x2="98"  y2="170" stroke="#2C1A00" stroke-width="1.2"/>
+          <line x1="122" y1="164" x2="122" y2="170" stroke="#2C1A00" stroke-width="1.2"/>
+          <!-- base -->
+          <rect x="83" y="178" width="54" height="9"  rx="4" fill="#DAA520" stroke="#2C1A00" stroke-width="2.5"/>
+          <rect x="77" y="187" width="66" height="12" rx="3" fill="#C49A2A" stroke="#2C1A00" stroke-width="2.5"/>
+          <line x1="83" y1="192" x2="137" y2="192" stroke="rgba(0,0,0,.2)" stroke-width="1.2"/>
+          <rect x="80" y="199" width="60" height="11" rx="3" fill="#A07D22" stroke="#2C1A00" stroke-width="2.5"/>
+          <!-- contacto guinda -->
+          <circle cx="110" cy="215" r="8" fill="url(#bG)" stroke="#2C1A00" stroke-width="2.5"/>
+          <circle cx="110" cy="215" r="3" fill="rgba(255,255,255,.18)"/>
+          <!-- rayo corona lightning -->
+          <path d="M117 -4 L102 26 H113 L99 58 L128 22 H117 Z"
+                fill="url(#lG)" stroke="#2C1A00" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M113 4 L106 22 H113" stroke="rgba(255,255,255,.5)" stroke-width="2" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div class="exp-lbl">Normal</div>
+        <div class="exp-sub">Sin incidentes</div>
+      </div>
+
+      <!-- ── ALERTA ── -->
+      <div class="exp-cell">
+        <svg width="116" height="192" viewBox="38 -10 144 248" fill="none" overflow="visible">
+          <!-- bulbo ligeramente más cálido -->
+          <path d="M64 158 Q60 112 77 84 Q91 58 110 54 Q129 58 143 84 Q160 112 156 158 L72 180 Q69 173 64 158Z"
+                fill="url(#bul)" stroke="#2C1A00" stroke-width="3.5"/>
+          <ellipse cx="90" cy="97" rx="13" ry="20" fill="rgba(255,255,255,.26)" transform="rotate(-18,90,97)"/>
+          <!-- cejas en V de susto -->
+          <path d="M72 103 Q89 95 104 106" stroke="#2C1A00" stroke-width="6" stroke-linecap="round"/>
+          <path d="M116 106 Q131 95 148 103" stroke="#2C1A00" stroke-width="6" stroke-linecap="round"/>
+          <!-- ojos grandes abiertos -->
+          <ellipse cx="90"  cy="134" rx="22" ry="24" fill="white" stroke="#2C1A00" stroke-width="3"/>
+          <circle  cx="91"  cy="135" r="14" fill="#6B3A00"/>
+          <circle  cx="92"  cy="136" r="9"  fill="#0A0A0A"/>
+          <circle  cx="98"  cy="127" r="5"  fill="white"/>
+          <ellipse cx="130" cy="134" rx="22" ry="24" fill="white" stroke="#2C1A00" stroke-width="3"/>
+          <circle  cx="131" cy="135" r="14" fill="#6B3A00"/>
+          <circle  cx="132" cy="136" r="9"  fill="#0A0A0A"/>
+          <circle  cx="138" cy="127" r="5"  fill="white"/>
+          <!-- boca en O de susto -->
+          <ellipse cx="110" cy="163" rx="12" ry="10" fill="#2C1A00"/>
+          <ellipse cx="110" cy="164" rx="8"  ry="7"  fill="#FF4466"/>
+          <!-- base -->
+          <rect x="83" y="178" width="54" height="9"  rx="4" fill="#DAA520" stroke="#2C1A00" stroke-width="2.5"/>
+          <rect x="77" y="187" width="66" height="12" rx="3" fill="#C49A2A" stroke="#2C1A00" stroke-width="2.5"/>
+          <rect x="80" y="199" width="60" height="11" rx="3" fill="#A07D22" stroke="#2C1A00" stroke-width="2.5"/>
+          <circle cx="110" cy="215" r="8" fill="url(#bG)" stroke="#2C1A00" stroke-width="2.5"/>
+          <!-- rayo naranja alerta -->
+          <path d="M117 -4 L102 26 H113 L99 58 L128 22 H117 Z"
+                fill="#FF6B35" stroke="#2C1A00" stroke-width="3" stroke-linejoin="round"/>
+          <!-- burbuja ! -->
+          <circle cx="153" cy="46" r="14" fill="#FF3344" stroke="#2C1A00" stroke-width="2.5"/>
+          <line x1="153" y1="38" x2="153" y2="50" stroke="white" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="153" cy="55" r="2.2" fill="white"/>
+        </svg>
+        <div class="exp-lbl">Alerta</div>
+        <div class="exp-sub">Incidente activo</div>
+      </div>
+
+      <!-- ── RESUELTO ── -->
+      <div class="exp-cell">
+        <svg width="116" height="192" viewBox="32 -10 156 248" fill="none" overflow="visible">
+          <!-- viewBox más ancho para incluir las estrellas laterales -->
+          <path d="M64 158 Q60 112 77 84 Q91 58 110 54 Q129 58 143 84 Q160 112 156 158 L72 180 Q69 173 64 158Z"
+                fill="url(#bul)" stroke="#2C1A00" stroke-width="3.5"/>
+          <ellipse cx="90" cy="97" rx="14" ry="22" fill="rgba(255,255,255,.33)" transform="rotate(-18,90,97)"/>
+          <ellipse cx="84" cy="90" rx="6" ry="9" fill="rgba(255,255,255,.45)" transform="rotate(-18,84,90)"/>
+          <!-- cejas arqueadas de alegría -->
+          <path d="M73 104 Q89 94 106 100" stroke="#2C1A00" stroke-width="5.5" stroke-linecap="round"/>
+          <path d="M114 100 Q131 94 147 104" stroke="#2C1A00" stroke-width="5.5" stroke-linecap="round"/>
+          <!-- ojos entrecerrados felices -->
+          <path d="M70 133 Q90 118 110 133" stroke="#2C1A00" stroke-width="6" stroke-linecap="round"/>
+          <path d="M110 133 Q130 118 150 133" stroke="#2C1A00" stroke-width="6" stroke-linecap="round"/>
+          <!-- mejillas grandes -->
+          <ellipse cx="62"  cy="148" rx="16" ry="11" fill="rgba(240,80,50,.38)"/>
+          <ellipse cx="158" cy="148" rx="16" ry="11" fill="rgba(240,80,50,.38)"/>
+          <!-- sonrisa grande con dientes -->
+          <path d="M80 158 Q110 184 140 158" fill="#2C1A00" stroke="#2C1A00" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M84 160 Q110 182 136 160 Q122 174 110 175 Q98 174 84 160Z" fill="white"/>
+          <line x1="110" y1="160" x2="110" y2="174" stroke="#2C1A00" stroke-width="2"/>
+          <line x1="95"  y1="161" x2="95"  y2="173" stroke="#2C1A00" stroke-width="1.5"/>
+          <line x1="125" y1="161" x2="125" y2="173" stroke="#2C1A00" stroke-width="1.5"/>
+          <!-- base -->
+          <rect x="83" y="178" width="54" height="9"  rx="4" fill="#DAA520" stroke="#2C1A00" stroke-width="2.5"/>
+          <rect x="77" y="187" width="66" height="12" rx="3" fill="#C49A2A" stroke="#2C1A00" stroke-width="2.5"/>
+          <rect x="80" y="199" width="60" height="11" rx="3" fill="#A07D22" stroke="#2C1A00" stroke-width="2.5"/>
+          <circle cx="110" cy="215" r="8" fill="url(#bG)" stroke="#2C1A00" stroke-width="2.5"/>
+          <!-- rayo dorado brillante -->
+          <path d="M117 -4 L102 26 H113 L99 58 L128 22 H117 Z"
+                fill="url(#lG)" stroke="#2C1A00" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M113 4 L106 22 H113" stroke="rgba(255,255,255,.5)" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <!-- estrellas de celebración -->
+          <path d="M44 50 L47 42 L50 50 L58 47 L50 55 L47 63 L44 55 L36 52 Z"
+                fill="#FFD700" stroke="#2C1A00" stroke-width="2"/>
+          <path d="M164 45 L167 38 L170 45 L177 42 L170 50 L167 58 L164 50 L157 47 Z"
+                fill="#FFD700" stroke="#2C1A00" stroke-width="2"/>
+          <circle cx="35"  cy="80" r="4.5" fill="#FFD700" stroke="#2C1A00" stroke-width="1.5"/>
+          <circle cx="183" cy="75" r="4"   fill="#FFD700" stroke="#2C1A00" stroke-width="1.5"/>
+        </svg>
+        <div class="exp-lbl">Resuelto</div>
+        <div class="exp-sub">Incidente cerrado</div>
+      </div>
+
+      <!-- ── INACTIVO / DORMIDO ── -->
+      <div class="exp-cell">
+        <svg width="116" height="192" viewBox="38 -10 144 248" fill="none" overflow="visible">
+          <!-- bulbo desaturado / apagado -->
+          <path d="M64 158 Q60 112 77 84 Q91 58 110 54 Q129 58 143 84 Q160 112 156 158 L72 180 Q69 173 64 158Z"
+                fill="#A89030" stroke="#2C1A00" stroke-width="3.5"/>
+          <ellipse cx="90" cy="97" rx="11" ry="17" fill="rgba(255,255,255,.12)" transform="rotate(-18,90,97)"/>
+          <!-- cejas relajadas -->
+          <path d="M77 110 Q89 106 103 109" stroke="#5C3A1E" stroke-width="5" stroke-linecap="round"/>
+          <path d="M117 109 Q131 106 143 110" stroke="#5C3A1E" stroke-width="5" stroke-linecap="round"/>
+          <!-- ojos cerrados con pestañas -->
+          <path d="M70 133 Q90 145 110 133" stroke="#5C3A1E" stroke-width="5.5" stroke-linecap="round"/>
+          <path d="M74 131 Q77 124 80 129" stroke="#5C3A1E" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M88 128 Q90 121 93 126" stroke="#5C3A1E" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M110 133 Q130 145 150 133" stroke="#5C3A1E" stroke-width="5.5" stroke-linecap="round"/>
+          <path d="M114 131 Q117 124 120 129" stroke="#5C3A1E" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M128 128 Q130 121 133 126" stroke="#5C3A1E" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- boca pequeña descansando -->
+          <path d="M100 158 Q110 163 120 158" stroke="#5C3A1E" stroke-width="3" stroke-linecap="round"/>
+          <!-- ZZZ volando -->
+          <text x="148" y="88"  font-size="20" font-weight="900" fill="#9B1035" font-family="Nunito,Arial" opacity=".78">z</text>
+          <text x="161" y="72"  font-size="14" font-weight="900" fill="#9B1035" font-family="Nunito,Arial" opacity=".55">z</text>
+          <text x="171" y="58"  font-size="10" font-weight="900" fill="#9B1035" font-family="Nunito,Arial" opacity=".35">z</text>
+          <!-- base apagada -->
+          <rect x="83" y="178" width="54" height="9"  rx="4" fill="#8A6D14" stroke="#2C1A00" stroke-width="2.5"/>
+          <rect x="77" y="187" width="66" height="12" rx="3" fill="#7A5E12" stroke="#2C1A00" stroke-width="2.5"/>
+          <rect x="80" y="199" width="60" height="11" rx="3" fill="#664F0F" stroke="#2C1A00" stroke-width="2.5"/>
+          <circle cx="110" cy="215" r="8" fill="#4A0018" stroke="#2C1A00" stroke-width="2.5"/>
+          <!-- rayo corona apagado -->
+          <path d="M117 -4 L102 26 H113 L99 58 L128 22 H117 Z"
+                fill="#9A7818" stroke="#2C1A00" stroke-width="3" stroke-linejoin="round" opacity=".55"/>
+        </svg>
+        <div class="exp-lbl">Inactivo</div>
+        <div class="exp-sub">Modo descanso</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════ 09 REGLAS ══════ -->
+<section id="uso">
+<div class="wrap">
+  <div class="rv">
+    <div class="sl">09 — Uso Correcto</div>
+    <h2 class="st">Lo que SÍ y NO</h2>
+    <div class="sr"></div>
+  </div>
+  <div class="rules-grid rv">
+    <div class="rc"><span class="rb rb-do">Permitido</span>
+      <div class="rp"><div style="display:flex;align-items:center;gap:10px"><div style="width:40px;height:40px;background:var(--d3);border-radius:10px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 12px var(--gg)"><svg width="24" height="24" viewBox="0 0 52 52" fill="none"><path d="M30 6L14 28H26L22 46L38 24H26L30 6Z" fill="url(#bG)"/></svg></div><div class="wm"><span style="color:var(--wh)">Apagones</span><span style="color:var(--gr4);font-weight:400"> Mid</span></div></div></div>
+      <div class="rd">Ícono + wordmark con jerarquía Bold + Regular sobre fondo oscuro, sin modificar escala ni separación.</div>
+    </div>
+    <div class="rc"><span class="rb rb-dont">Prohibido</span>
+      <div class="rp"><div style="position:relative;display:flex;align-items:center;gap:10px;opacity:.5;filter:grayscale(1)"><div style="width:40px;height:40px;background:#444;border-radius:10px;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 52 52" fill="none"><path d="M30 6L14 28H26L22 46L38 24H26L30 6Z" fill="#888"/></svg></div><div class="wm" style="color:#888;letter-spacing:2px;text-transform:uppercase">APAGONES MID</div></div><div class="xline"></div></div>
+      <div class="rd">No separar las palabras, no poner en mayúsculas completas, no cambiar pesos tipográficos del wordmark.</div>
+    </div>
+    <div class="rc"><span class="rb rb-do">Permitido</span>
+      <div class="rp"><div style="display:flex;gap:16px;align-items:center"><div style="display:flex;align-items:center;gap:6px"><div style="width:16px;height:16px;background:var(--g);border-radius:3px"></div><span style="font-size:11px;font-weight:700;color:var(--gb)">Energía</span></div><div style="width:1px;height:18px;background:var(--gr1)"></div><div style="display:flex;align-items:center;gap:6px"><div style="width:16px;height:16px;background:var(--t);border-radius:3px"></div><span style="font-size:11px;font-weight:700;color:var(--tb)">Agua</span></div></div></div>
+      <div class="rd">Guinda para energía/apagones. Teal para agua/fugas. Los colores de categoría no son intercambiables.</div>
+    </div>
+    <div class="rc"><span class="rb rb-dont">Prohibido</span>
+      <div class="rp" style="position:relative"><div style="width:52px;height:52px;background:linear-gradient(135deg,#0055DD,#00CCAA);border-radius:13px;display:flex;align-items:center;justify-content:center;opacity:.75"><svg width="30" height="30" viewBox="0 0 52 52" fill="none"><path d="M30 6L14 28H26L22 46L38 24H26L30 6Z" fill="white"/></svg></div><div class="xline" style="border-radius:6px"></div></div>
+      <div class="rd">No aplicar el ícono sobre degradados o fondos fuera del sistema. Solo fondos de la paleta oficial.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════ 10 VOZ ══════ -->
+<section id="voz">
+<div class="wrap">
+  <div class="rv">
+    <div class="sl">10 — Voz y Tono</div>
+    <h2 class="st">Cómo Habla la Marca</h2>
+    <div class="sr"></div>
+    <p class="ss">Tagline oficial: <em style="color:var(--wh)">"¿Sin luz o sin agua? Tu reporte es nuestra voz."</em></p>
+  </div>
+  <div class="voice-grid rv">
+    <div class="vc">
+      <svg class="vc-icon" viewBox="0 0 48 48" fill="none"><rect x="1" y="1" width="46" height="46" rx="4" stroke="var(--g)" stroke-width="1.5"/><path d="M28 8L14 26H22L18 42L32 22H22L28 8Z" fill="url(#bG)"/></svg>
+      <div class="vc-title">Directo</div>
+      <div class="vc-desc">Información útil antes que emocional. Qué pasó, dónde y cuánto durará. Sin relleno.</div>
+      <div class="vc-ex">"Apagón activo en García Ginerés. Restauración estimada: 2h."</div>
+    </div>
+    <div class="vc">
+      <svg class="vc-icon" viewBox="0 0 48 48" fill="none"><rect x="1" y="1" width="46" height="46" rx="4" stroke="var(--g)" stroke-width="1.5"/><path d="M24 8C18.5 8 14 12.5 14 18C14 25 24 40 24 40C24 40 34 25 34 18C34 12.5 29.5 8 24 8Z" fill="url(#bG)"/><circle cx="24" cy="18" r="4" fill="white" opacity=".9"/></svg>
+      <div class="vc-title">Local</div>
+      <div class="vc-desc">Habla como merideño. Nombres de colonias reales, referencias locales. Es de Mérida y para Mérida. Con soporte en Maya.</div>
+      <div class="vc-ex">"Tu zona en el Centro lleva 45 min sin luz. 12 vecinos reportaron."</div>
+    </div>
+    <div class="vc">
+      <svg class="vc-icon" viewBox="0 0 48 48" fill="none"><rect x="1" y="1" width="46" height="46" rx="4" stroke="var(--g)" stroke-width="1.5"/><circle cx="24" cy="24" r="13" stroke="url(#bG)" stroke-width="1.5"/><circle cx="24" cy="24" r="2" fill="var(--gb)"/><path d="M24 14V24L30 28" stroke="var(--gb)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="vc-title">Preciso</div>
+      <div class="vc-desc">Datos exactos o marcados como estimados. Nunca inventar tiempos. Los datos de privacidad del reporte son siempre protegidos.</div>
+      <div class="vc-ex">"Tiempo estimado ~90 min (sin confirmación oficial CFE)."</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:12px">
+    <svg width="44" height="44" viewBox="0 0 120 120" fill="none" style="filter:drop-shadow(0 4px 16px rgba(92,1,32,.55))">
+      <rect width="120" height="120" rx="28" fill="url(#iconBg)"/>
+      <path d="M0 0H120V38Q60 52 0 38Z" fill="url(#gloss)" opacity=".5"/>
+      <ellipse cx="60" cy="62" rx="28" ry="34" fill="#FFD700" opacity=".1"/>
+      <path d="M73 10L42 58H62L47 110L86 54H66Z" fill="url(#iconBolt)"/>
+      <path d="M66 20L50 52H64L52 92" stroke="rgba(255,255,255,.4)" stroke-width="2" stroke-linecap="round" fill="none"/>
+    </svg>
+    <div class="f-name"><span class="f1">Apagones</span><span class="f2">Mid</span></div>
+  </div>
+  <div class="f-ver">Manual de Identidad Visual · v4.0 · 2025 · Mérida, Yucatán</div>
+</footer>
+
+<script>
+// Reveal
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');obs.unobserve(x.target)}}),{threshold:.05});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+// Sparks
+const sc=document.getElementById('sparks');
+for(let i=0;i<20;i++){
+  const s=document.createElement('div');
+  s.className='spark';
+  const cols=['var(--gb)','var(--g)','#FFD700','var(--gb)'];
+  s.style.cssText=`left:${Math.random()*100}%;top:${20+Math.random()*62}%;--dur:${3+Math.random()*5}s;--tx:${(Math.random()-.5)*65}px;--ty:${-30-Math.random()*65}px;animation-delay:${Math.random()*6}s;width:${1+Math.random()*2.5}px;height:${1+Math.random()*2.5}px;background:${cols[Math.floor(Math.random()*cols.length)]}`;
+  sc.appendChild(s);
+}
+</script>
+</body>
+</html>
